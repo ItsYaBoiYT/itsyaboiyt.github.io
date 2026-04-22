@@ -1,7 +1,6 @@
 /* shared.js — inject nav + footer on every page */
 
 const NAV_HTML = `
-const NAV_HTML = `
 <nav class="site-nav" id="siteNav">
   <a href="index.html" class="nav-logo">Young's&nbsp;<span class="accent">Roofing</span>&nbsp;&amp;&nbsp;Exteriors</a>
   <ul class="nav-links" id="navLinks">
@@ -9,7 +8,7 @@ const NAV_HTML = `
     <li><a href="services.html" data-page="services">Services</a></li>
     <li><a href="gallery.html" data-page="gallery">Our Work</a></li>
     <li><a href="contact.html" data-page="contact">Contact</a></li>
-    <li><a href="contact.html" class="nav-cta">📞 Free Estimate</a></li>
+    <li><a href="tel:+15041234567" class="nav-cta">📞 Call Now</a></li>
   </ul>
   <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
     <span></span><span></span><span></span>
@@ -23,7 +22,7 @@ const FOOTER_HTML = `
       <div class="footer-brand">
         <a href="index.html" class="nav-logo">Young's&nbsp;<span class="accent">Roofing</span>&nbsp;&amp;&nbsp;Exteriors</a>
         <p class="footer-tagline">Born and raised in Metairie. Protecting Jefferson Parish homes since day one.</p>
-        <a href="tel:+15043299223" class="footer-phone">📞 (504) 329-9223</a>
+        <a href="tel:+15041234567" class="footer-phone">📞 (504) 123-4567</a>
       </div>
       <div class="footer-col">
         <h4>Services</h4>
@@ -75,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Inject footer
   document.body.insertAdjacentHTML('beforeend', FOOTER_HTML);
 
-// Highlight active nav link
+  // Highlight active nav link
   const page = document.body.dataset.page;
   document.querySelectorAll('.nav-links a[data-page]').forEach(a => {
     if (a.dataset.page === page) a.classList.add('active');
@@ -87,18 +86,31 @@ document.addEventListener('DOMContentLoaded', () => {
     nav.classList.toggle('scrolled', window.scrollY > 20);
   }, { passive: true });
 
-  // Hamburger menu
+  // Hamburger menu toggle
   const hamburger = document.getElementById('navHamburger');
   const navLinks = document.getElementById('navLinks');
+
   hamburger.addEventListener('click', () => {
     const isOpen = navLinks.classList.toggle('mobile-open');
     hamburger.classList.toggle('is-open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
   });
-  // Close menu when a link is clicked
+
+  // Close menu when any link is tapped
   navLinks.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => {
       navLinks.classList.remove('mobile-open');
       hamburger.classList.remove('is-open');
+      document.body.style.overflow = '';
     });
+  });
+
+  // Close menu on outside tap
+  document.addEventListener('click', (e) => {
+    if (!nav.contains(e.target)) {
+      navLinks.classList.remove('mobile-open');
+      hamburger.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
   });
 });
