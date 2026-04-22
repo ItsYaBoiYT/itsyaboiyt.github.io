@@ -440,50 +440,54 @@ a { color: inherit; }
 @media (max-width: 960px) {
   .site-nav { padding: 0 1.5rem; }
 
-  /* Show hamburger, hide inline links */
   .nav-hamburger { display: flex; }
+
   .nav-links {
     display: none;
     position: fixed;
-    top: 68px; left: 0; right: 0; bottom: 0;
-    background: rgba(247,242,232,0.98);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    top: 68px; left: 0; right: 0;
+    height: calc(100vh - 68px);
+    background: #f7f2ee;
     flex-direction: column;
-    padding: 1.5rem;
-    gap: 0.4rem;
+    padding: 1rem 1.5rem 2rem;
+    gap: 0;
     overflow-y: auto;
-    z-index: 199;
-    border-top: 1px solid var(--border);
+    z-index: 9999;
+    border-top: 2px solid var(--brick);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
   }
-  .nav-links.mobile-open { display: flex; }
+  .nav-links.mobile-open {
+    display: flex !important;
+  }
 
   .nav-links li { width: 100%; }
   .nav-links a {
     display: block;
-    padding: 0.9rem 1.2rem;
-    font-size: 1rem;
-    border-radius: var(--radius);
+    padding: 1rem 0.5rem;
+    font-size: 1.05rem;
+    font-weight: 500;
     color: var(--brown);
+    border-radius: 0;
     border-bottom: 1px solid var(--parchment);
+    background: none;
   }
   .nav-links li:last-child a { border-bottom: none; }
-  .nav-links a:hover { background: var(--parchment); color: var(--brown); }
+  .nav-links a:hover { background: var(--parchment); padding-left: 1rem; }
+  .nav-links a.active { color: var(--brick); }
 
   .nav-cta {
-    margin-top: 0.8rem;
+    margin-top: 1rem;
+    background: var(--brick) !important;
+    color: white !important;
+    text-align: center;
     justify-content: center;
     font-size: 1rem !important;
     padding: 1rem !important;
     border-radius: var(--radius) !important;
+    border-bottom: none !important;
   }
 
   .container { padding: 0 1.5rem; }
   .page-header { padding: 6rem 1.5rem 3rem; }
   .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
-}
-
-@media (max-width: 600px) {
-  .footer-top { grid-template-columns: 1fr; }
-  .site-footer { padding: 2.5rem 1.5rem 1.5rem; }
 }
