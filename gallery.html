@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Work — Young's Roofing & Exteriors Co.</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* ── STATS ── */
+    .gallery-stats {
+      background: var(--parchment);
+      border-bottom: 1px solid var(--tan);
+      padding: 2rem 0;
+    }
+    .gallery-stats .container {
+      display: flex; justify-content: center; gap: 5rem; flex-wrap: wrap;
+    }
+    .gstat { text-align: center; }
+    .gstat-num { font-family: var(--font-display); font-size: 2.4rem; font-weight: 900; color: var(--brick); line-height: 1; }
+    .gstat-lbl { font-family: var(--font-body); font-style: italic; font-size: 0.82rem; color: var(--muted); margin-top: 0.2rem; }
+
+    /* ── FILTER ── */
+    .filter-bar { padding: 2.2rem 0 0; }
+    .filter-bar .container { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .filter-btn {
+      padding: 0.42rem 1.1rem; border-radius: 2rem;
+      font-size: 0.8rem; font-weight: 500;
+      color: var(--brown); text-decoration: none;
+      border: 1px solid var(--parchment); background: var(--white);
+      cursor: pointer; transition: all 0.2s;
+      font-family: var(--font-ui);
+    }
+    .filter-btn:hover { border-color: var(--brick); color: var(--brick); }
+    .filter-btn.active { background: var(--brick); border-color: var(--brick); color: var(--white); }
+
+    /* ── MASONRY GALLERY ── */
+    .gallery-wrap { padding: 2rem 0 5rem; }
+    .masonry {
+      columns: 3; column-gap: 1.2rem;
+    }
+    .gallery-item {
+      break-inside: avoid; margin-bottom: 1.2rem;
+      position: relative; overflow: hidden;
+      border-radius: 6px; cursor: pointer;
+      border: 1px solid var(--parchment);
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+    .gallery-item:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+    .gallery-item svg { width: 100%; display: block; }
+
+    .gallery-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(28,40,32,0.88) 0%, transparent 55%);
+      opacity: 0; transition: opacity 0.3s;
+      display: flex; flex-direction: column; justify-content: flex-end; padding: 1.2rem;
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    .overlay-tag {
+      display: inline-block; background: var(--brick); color: var(--white);
+      font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.22rem 0.65rem; border-radius: 2px; margin-bottom: 0.35rem; width: fit-content;
+    }
+    .overlay-title { font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; color: var(--cream); margin-bottom: 0.15rem; }
+    .overlay-loc { font-family: var(--font-body); font-style: italic; font-size: 0.76rem; color: #9abf9c; }
+
+    .item-badge {
+      position: absolute; top: 0.75rem; left: 0.75rem;
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.22rem 0.65rem; border-radius: 2px; color: var(--white);
+    }
+    .badge-before-after { background: var(--moss); }
+    .badge-storm { background: var(--brick); }
+
+    /* Before/After pair */
+    .ba-pair {
+      break-inside: avoid; margin-bottom: 1.2rem;
+      border: 1px solid var(--parchment); border-radius: 6px; overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+    .ba-pair:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+    .ba-labels { display: grid; grid-template-columns: 1fr 1fr; }
+    .ba-label {
+      padding: 0.35rem; text-align: center;
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .ba-label.before { background: var(--parchment); color: var(--muted); }
+    .ba-label.after  { background: var(--moss); color: var(--white); }
+    .ba-photos { display: grid; grid-template-columns: 1fr 1fr; }
+    .ba-photos svg { width: 100%; display: block; }
+
+    /* placeholder note */
+    .photo-note {
+      text-align: center; padding: 0.5rem 0 2rem;
+      font-family: var(--font-body); font-style: italic;
+      color: var(--muted); font-size: 0.85rem;
+    }
+
+    /* CTA */
+    .cta-band { background: var(--brick); padding: 5rem 3rem; text-align: center; position: relative; overflow: hidden; }
+    .cta-band::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse 55% 80% at 15% 50%, rgba(0,0,0,0.14) 0%, transparent 55%), radial-gradient(ellipse 55% 80% at 85% 50%, rgba(0,0,0,0.1) 0%, transparent 55%); }
+    .cta-inner { position:relative; max-width:600px; margin:0 auto; }
+    .cta-inner h2 { font-family:var(--font-display); font-size:clamp(2rem,5vw,3.2rem); font-weight:900; color:var(--white); line-height:1.1; margin-bottom:0.9rem; }
+    .cta-inner h2 em { font-style:italic; color:#fde8d5; }
+    .cta-inner p { font-family:var(--font-body); font-style:italic; color:rgba(253,250,244,0.8); margin-bottom:2.2rem; font-size:1rem; line-height:1.7; }
+    .cta-btns { display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; }
+
+    @media (max-width: 960px) {
+      .masonry { columns: 2; }
+      .gallery-stats .container { gap: 2.5rem; }
+    }
+    @media (max-width: 600px) {
+      .masonry { columns: 1; }
+    }
+  </style>
+</head>
+<body data-page="gallery">
+<script src="shared.js"></script>
+
+<div class="page-header">
+  <div class="page-eyebrow">Real Jobs, Real Neighbors</div>
+  <h1>Our Work Across<br><em>the Parish</em></h1>
+  <p>Every roof here belongs to a Metairie or Jefferson Parish homeowner who trusted us with their home.</p>
+</div>
+
+<!-- STATS -->
+<div class="gallery-stats">
+  <div class="container">
+    <div class="gstat"><div class="gstat-num">500+</div><div class="gstat-lbl">Roofs completed</div></div>
+    <div class="gstat"><div class="gstat-num">20+</div><div class="gstat-lbl">Years in the parish</div></div>
+    <div class="gstat"><div class="gstat-num">100%</div><div class="gstat-lbl">Satisfaction guaranteed</div></div>
+    <div class="gstat"><div class="gstat-num">4.9 ★</div><div class="gstat-lbl">Average review rating</div></div>
+  </div>
+</div>
+
+<!-- FILTER -->
+<div class="filter-bar">
+  <div class="container">
+    <button class="filter-btn active" onclick="filterGallery('all',this)">All Projects</button>
+    <button class="filter-btn" onclick="filterGallery('replacement',this)">Replacements</button>
+    <button class="filter-btn" onclick="filterGallery('repair',this)">Repairs</button>
+    <button class="filter-btn" onclick="filterGallery('storm',this)">Storm Damage</button>
+    <button class="filter-btn" onclick="filterGallery('gutters',this)">Gutters & Siding</button>
+    <button class="filter-btn" onclick="filterGallery('commercial',this)">Commercial</button>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<div class="gallery-wrap">
+  <div class="container">
+    <div class="masonry" id="galleryGrid">
+
+      <!-- 1 replacement -->
+      <div class="gallery-item anim-up-1" data-cat="replacement">
+        <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="260" fill="#bdd0e6"/>
+          <polygon points="0,130 200,32 400,130" fill="#7a6048"/>
+          <g stroke="#6a5038" stroke-width="1.6" opacity="0.42">
+            <line x1="0" y1="114" x2="200" y2="44"/><line x1="400" y1="114" x2="200" y2="44"/>
+            <line x1="0" y1="98" x2="200" y2="58"/><line x1="400" y1="98" x2="200" y2="58"/>
+            <line x1="14" y1="130" x2="200" y2="86"/><line x1="386" y1="130" x2="200" y2="86"/>
+            <line x1="52" y1="130" x2="200" y2="108"/><line x1="348" y1="130" x2="200" y2="108"/>
+          </g>
+          <rect x="178" y="50" width="20" height="58" fill="#5a3a28"/>
+          <rect x="174" y="46" width="28" height="7" fill="#4a2a18"/>
+          <rect x="0" y="130" width="400" height="130" fill="#c8aa88"/>
+          <rect x="72" y="130" width="256" height="130" fill="#b89870"/>
+          <rect x="160" y="148" width="120" height="112" fill="#a88860"/>
+          <rect x="188" y="175" width="64" height="85" fill="#987850"/>
+          <rect x="208" y="192" width="24" height="68" fill="#886840"/>
+          <text x="200" y="240" text-anchor="middle" fill="rgba(120,80,40,0.08)" font-size="32" font-family="serif" font-style="italic">Metairie</text>
+        </svg>
+        <span class="item-badge badge-before-after">After</span>
+        <div class="gallery-overlay">
+          <span class="overlay-tag">Replacement</span>
+          <div class="overlay-title">Full Shingle Replacement</div>
+          <div class="overlay-loc">📍 Metairie, LA</div>
+        </div>
+      </div>
+
+      <!-- 2 Before/After storm -->
+      <div class="ba-pair anim-up-2" data-cat="storm">
+        <div class="ba-labels"><span class="ba-label before">Before</span><span class="ba-label after">After</span></div>
+        <div class="ba-photos">
+          <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="160" fill="#8a7060"/>
+            <polygon points="0,80 100,20 200,80" fill="#5a3a28"/>
+            <g fill="#3a2010" opacity="0.72"><rect x="38" y="52" width="26" height="15" rx="2"/><rect x="88" y="38" width="22" height="13" rx="2"/><rect x="132" y="56" width="28" height="14" rx="2"/></g>
+            <rect x="0" y="80" width="200" height="80" fill="#7a6050"/>
+            <rect x="58" y="80" width="84" height="80" fill="#6a5040"/>
+            <rect x="74" y="108" width="52" height="52" fill="#5a4030"/>
+            <text x="100" y="148" text-anchor="middle" fill="rgba(240,80,30,0.3)" font-size="9" font-family="sans-serif">Storm Damage</text>
+          </svg>
+          <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="160" fill="#c0d0e2"/>
+            <polygon points="0,80 100,20 200,80" fill="#7a6048"/>
+            <g stroke="#6a5038" stroke-width="1" opacity="0.42"><line x1="0" y1="67" x2="100" y2="30"/><line x1="200" y1="67" x2="100" y2="30"/><line x1="0" y1="54" x2="100" y2="40"/><line x1="200" y1="54" x2="100" y2="40"/></g>
+            <rect x="0" y="80" width="200" height="80" fill="#9a8068"/>
+            <g fill="#8a7058" opacity="0.52"><rect x="0" y="80" width="200" height="11"/><rect x="0" y="97" width="200" height="11"/><rect x="0" y="114" width="200" height="11"/><rect x="0" y="131" width="200" height="11"/><rect x="0" y="148" width="200" height="11"/></g>
+            <rect x="58" y="80" width="84" height="80" fill="#8a7058"/>
+            <rect x="74" y="108" width="52" height="52" fill="#7a6048"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- 3 gutters -->
+      <div class="gallery-item anim-up-1" data-cat="gutters">
+        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="300" fill="#c8d4b8"/>
+          <rect x="0" y="150" width="400" height="150" fill="#d0b880"/>
+          <g fill="#c0a060" opacity="0.62"><rect x="0" y="152" width="400" height="13"/><rect x="0" y="170" width="400" height="13"/><rect x="0" y="188" width="400" height="13"/><rect x="0" y="206" width="400" height="13"/><rect x="0" y="224" width="400" height="13"/><rect x="0" y="242" width="400" height="13"/><rect x="0" y="260" width="400" height="13"/><rect x="0" y="278" width="400" height="13"/></g>
+          <rect x="0" y="144" width="400" height="8" fill="#7a6040"/>
+          <path d="M0,145 Q200,145 400,145" stroke="#5a4028" stroke-width="6" fill="none"/>
+          <rect x="5" y="152" width="9" height="148" fill="#6a5030"/>
+          <rect x="386" y="152" width="9" height="148" fill="#6a5030"/>
+          <polygon points="0,150 200,48 400,150" fill="#8a7058"/>
+          <rect x="0" y="0" width="400" height="150" fill="#c8d4b8"/>
+          <polygon points="0,150 200,48 400,150" fill="#8a7058"/>
+          <text x="200" y="248" text-anchor="middle" fill="rgba(100,80,40,0.09)" font-size="28" font-family="serif" font-style="italic">Kenner</text>
+        </svg>
+        <div class="gallery-overlay">
+          <span class="overlay-tag">Gutters & Siding</span>
+          <div class="overlay-title">New K-Style Gutters</div>
+          <div class="overlay-loc">📍 Kenner, LA</div>
+        </div>
+      </div>
+
+      <!-- 4 metal roof -->
+      <div class="gallery-item anim-up-2" data-cat="replacement">
+        <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="220" fill="#b8c8d8"/>
+          <rect x="0" y="110" width="400" height="110" fill="#d4b890"/>
+          <polygon points="0,110 200,30 400,110" fill="#8a9080"/>
+          <g stroke="#7a8070" stroke-width="1.8" opacity="0.65">
+            <line x1="50" y1="110" x2="200" y2="38"/><line x1="350" y1="110" x2="200" y2="38"/>
+            <line x1="80" y1="110" x2="200" y2="46"/><line x1="320" y1="110" x2="200" y2="46"/>
+            <line x1="112" y1="110" x2="200" y2="56"/><line x1="288" y1="110" x2="200" y2="56"/>
+            <line x1="146" y1="110" x2="200" y2="68"/><line x1="254" y1="110" x2="200" y2="68"/>
+            <line x1="173" y1="110" x2="200" y2="80"/><line x1="227" y1="110" x2="200" y2="80"/>
+          </g>
+          <rect x="78" y="110" width="244" height="110" fill="#c8a880"/>
+          <rect x="130" y="126" width="60" height="84" fill="#b89868"/>
+          <rect x="210" y="126" width="60" height="84" fill="#b89868"/>
+          <text x="200" y="198" text-anchor="middle" fill="rgba(130,90,40,0.09)" font-size="26" font-family="serif" font-style="italic">River Ridge</text>
+        </svg>
+        <div class="gallery-overlay">
+          <span class="overlay-tag">Metal Roof</span>
+          <div class="overlay-title">Standing Seam Metal</div>
+          <div class="overlay-loc">📍 River Ridge, LA</div>
+        </div>
+      </div>
+
+      <!-- 5 Before/After repair -->
+      <div class="ba-pair anim-up-1" data-cat="repair">
+        <div class="ba-labels"><span class="ba-label before">Before</span><span class="ba-label after">After</span></div>
+        <div class="ba-photos">
+          <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="160" fill="#9a8870"/>
+            <rect x="0" y="80" width="200" height="80" fill="#8a7860"/>
+            <g fill="#6a5840" opacity="0.78"><rect x="18" y="84" width="164" height="12"/><rect x="18" y="102" width="164" height="12"/><rect x="18" y="120" width="164" height="12"/></g>
+            <path d="M78,82 L94,95 L83,108 L100,120" stroke="#2a1a0a" stroke-width="3" fill="none" opacity="0.65"/>
+            <ellipse cx="88" cy="100" rx="14" ry="9" fill="#3a2010" opacity="0.38"/>
+            <polygon points="0,80 100,20 200,80" fill="#6a5038"/>
+            <text x="100" y="148" text-anchor="middle" fill="rgba(220,70,0,0.28)" font-size="9" font-family="sans-serif">Leak Damage</text>
+          </svg>
+          <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="160" fill="#c0d0e0"/>
+            <rect x="0" y="80" width="200" height="80" fill="#9a8068"/>
+            <g fill="#8a7058" opacity="0.55"><rect x="0" y="80" width="200" height="11"/><rect x="0" y="97" width="200" height="11"/><rect x="0" y="114" width="200" height="11"/><rect x="0" y="131" width="200" height="11"/><rect x="0" y="148" width="200" height="11"/></g>
+            <polygon points="0,80 100,20 200,80" fill="#7a5e48"/>
+            <g stroke="#6a4e38" stroke-width="1" opacity="0.42"><line x1="0" y1="67" x2="100" y2="30"/><line x1="200" y1="67" x2="100" y2="30"/></g>
+          </svg>
+        </div>
+      </div>
+
+      <!-- 6 commercial -->
+      <div class="gallery-item anim-up-2" data-cat="commercial">
+        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="200" fill="#c0ccd8"/>
+          <rect x="0" y="60" width="400" height="140" fill="#9a9a8a"/>
+          <rect x="0" y="55" width="400" height="10" fill="#7a7a6a"/>
+          <rect x="58" y="30" width="48" height="28" fill="#6a6a5a" rx="2"/>
+          <rect x="148" y="35" width="38" height="22" fill="#6a6a5a" rx="2"/>
+          <rect x="278" y="28" width="52" height="30" fill="#6a6a5a" rx="2"/>
+          <g stroke="#8a8a7a" stroke-width="1" opacity="0.35"><line x1="0" y1="78" x2="400" y2="78"/><line x1="0" y1="98" x2="400" y2="98"/><line x1="0" y1="118" x2="400" y2="118"/><line x1="0" y1="138" x2="400" y2="138"/><line x1="0" y1="158" x2="400" y2="158"/><line x1="0" y1="178" x2="400" y2="178"/></g>
+          <rect x="0" y="0" width="400" height="60" fill="#c0ccd8"/>
+          <text x="200" y="180" text-anchor="middle" fill="rgba(80,80,60,0.1)" font-size="26" font-family="serif" font-style="italic">Elmwood</text>
+        </svg>
+        <div class="gallery-overlay">
+          <span class="overlay-tag">Commercial</span>
+          <div class="overlay-title">TPO Flat Roof System</div>
+          <div class="overlay-loc">📍 Elmwood, LA</div>
+        </div>
+      </div>
+
+      <!-- 7 post-Ida -->
+      <div class="gallery-item anim-up-1" data-cat="storm">
+        <svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="280" fill="#d0c8a0"/>
+          <rect x="0" y="140" width="400" height="140" fill="#b8a080"/>
+          <polygon points="0,140 160,50 320,140" fill="#7a6048"/>
+          <polygon points="200,140 320,70 440,140" fill="#6a5038"/>
+          <rect x="240" y="60" width="22" height="56" fill="#5a3a28"/>
+          <g opacity="0.45" fill="#6a5038"><rect x="0" y="126" width="320" height="10"/><rect x="0" y="112" width="260" height="10"/><rect x="0" y="98" width="200" height="10"/></g>
+          <rect x="58" y="140" width="284" height="140" fill="#a89070"/>
+          <rect x="148" y="155" width="104" height="125" fill="#987860"/>
+          <rect x="170" y="180" width="60" height="100" fill="#8a6850"/>
+          <text x="200" y="262" text-anchor="middle" fill="rgba(120,80,40,0.09)" font-size="26" font-family="serif" font-style="italic">Harahan</text>
+        </svg>
+        <span class="item-badge badge-storm">After Ida</span>
+        <div class="gallery-overlay">
+          <span class="overlay-tag">Storm Recovery</span>
+          <div class="overlay-title">Post-Ida Full Replacement</div>
+          <div class="overlay-loc">📍 Harahan, LA</div>
+        </div>
+      </div>
+
+      <!-- 8 siding -->
+      <div class="gallery-item anim-up-2" data-cat="gutters">
+        <svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="240" fill="#c8d4bc"/>
+          <rect x="0" y="120" width="400" height="120" fill="#d0b888"/>
+          <g fill="#c0a868" opacity="0.6"><rect x="0" y="122" width="400" height="13"/><rect x="0" y="140" width="400" height="13"/><rect x="0" y="158" width="400" height="13"/><rect x="0" y="176" width="400" height="13"/><rect x="0" y="194" width="400" height="13"/><rect x="0" y="212" width="400" height="13"/><rect x="0" y="230" width="400" height="13"/></g>
+          <rect x="0" y="114" width="400" height="8" fill="#7a6040"/>
+          <polygon points="0,120 200,40 400,120" fill="#8a7058"/>
+          <rect x="0" y="0" width="400" height="120" fill="#c8d4bc"/>
+          <polygon points="0,120 200,40 400,120" fill="#8a7058"/>
+          <rect x="4" y="122" width="8" height="118" fill="#6a5030"/>
+          <rect x="388" y="122" width="8" height="118" fill="#6a5030"/>
+          <text x="200" y="214" text-anchor="middle" fill="rgba(100,80,40,0.09)" font-size="26" font-family="serif" font-style="italic">Jefferson</text>
+        </svg>
+        <div class="gallery-overlay">
+          <span class="overlay-tag">Siding</span>
+          <div class="overlay-title">New Vinyl Siding & Gutters</div>
+          <div class="overlay-loc">📍 Jefferson, LA</div>
+        </div>
+      </div>
+
+    </div><!-- end masonry -->
+
+    <p class="photo-note">📸 Add your real job photos here — before & afters are the most powerful trust-builders for local homeowners.</p>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-band">
+  <div class="cta-inner">
+    <h2>Want Your Home<br><em>Looking This Good?</em></h2>
+    <p>Get a free inspection — no pressure, just honest advice from your neighbors.</p>
+    <div class="cta-btns">
+      <a href="contact.html" class="btn btn-white">Request a Free Estimate</a>
+      <a href="tel:+15041234567" class="btn btn-outline">📞 (504) 123-4567</a>
+    </div>
+  </div>
+</div>
+
+<script>
+function filterGallery(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.gallery-item, .ba-pair').forEach(item => {
+    const show = cat === 'all' || item.dataset.cat === cat;
+    item.style.display = show ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>

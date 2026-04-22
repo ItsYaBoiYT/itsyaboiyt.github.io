@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Services — Young's Roofing & Exteriors Co.</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* ── QUICK-NAV ── */
+    .service-subnav {
+      background: var(--parchment);
+      border-bottom: 1px solid var(--tan);
+      padding: 0.85rem 0;
+      position: sticky; top: 68px; z-index: 100;
+    }
+    .service-subnav .container {
+      display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center;
+    }
+    .subnav-btn {
+      padding: 0.38rem 1rem; border-radius: 2rem;
+      font-size: 0.8rem; font-weight: 500;
+      color: var(--brown); text-decoration: none;
+      border: 1px solid var(--tan); background: var(--white);
+      transition: all 0.2s;
+    }
+    .subnav-btn:hover { background: var(--brick); color: var(--white); border-color: var(--brick); }
+
+    /* ── SERVICE SECTIONS ── */
+    .svc-section {
+      padding: 5.5rem 0;
+      border-bottom: 1px solid var(--parchment);
+    }
+    .svc-section:last-of-type { border-bottom: none; }
+    .svc-section-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center;
+    }
+    .svc-section-grid.flip { direction: rtl; }
+    .svc-section-grid.flip > * { direction: ltr; }
+
+    /* illustrated panel */
+    .svc-panel {
+      border-radius: 8px; overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+    .svc-panel svg { width: 100%; display: block; }
+    .svc-panel-badge {
+      position: absolute; top: 1rem; left: 1rem;
+      background: var(--brick); color: var(--white);
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.28rem 0.7rem; border-radius: 2px;
+    }
+    .svc-panel-badge.green { background: var(--moss); }
+
+    .svc-content h2 {
+      font-family: var(--font-display); font-size: clamp(1.65rem, 3vw, 2.3rem);
+      font-weight: 900; color: var(--brown); line-height: 1.12; margin-bottom: 0.9rem;
+    }
+    .svc-content h2 em { color: var(--brick); font-style: italic; }
+    .svc-content > p {
+      font-family: var(--font-body); font-size: 0.96rem;
+      line-height: 1.85; color: var(--muted); margin-bottom: 0.8rem;
+    }
+    .svc-list {
+      list-style: none; display: flex; flex-direction: column;
+      gap: 0.5rem; margin: 1.2rem 0;
+    }
+    .svc-list li {
+      display: flex; align-items: flex-start; gap: 0.7rem;
+      font-size: 0.88rem; color: var(--text); line-height: 1.55;
+    }
+    .svc-list li::before {
+      content: '✦'; color: var(--brick); font-size: 0.58rem;
+      margin-top: 0.28rem; flex-shrink: 0;
+    }
+    .insurance-note {
+      display: flex; align-items: flex-start; gap: 0.8rem;
+      background: var(--moss); color: var(--white);
+      padding: 1rem 1.3rem; border-radius: 4px;
+      font-size: 0.84rem; line-height: 1.55; margin-top: 1.1rem;
+    }
+    .insurance-note strong { display:block; margin-bottom:0.15rem; font-weight:600; }
+
+    /* ── WEATHER BOX ── */
+    .weather-box { padding: 5rem 0; background: var(--night); }
+    .weather-grid {
+      display: grid; grid-template-columns: repeat(4,1fr); gap: 1.2rem;
+      margin-top: 2.8rem;
+    }
+    .w-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 6px; padding: 1.6rem 1.2rem; text-align: center;
+      transition: background 0.2s;
+    }
+    .w-card:hover { background: rgba(255,255,255,0.07); }
+    .w-icon { font-size: 1.7rem; margin-bottom: 0.6rem; display: block; }
+    .w-card h4 { font-family: var(--font-display); font-size: 0.92rem; font-weight: 700; color: var(--cream); margin-bottom: 0.35rem; }
+    .w-card p { font-size: 0.8rem; color: #6a8a6c; line-height: 1.55; }
+
+    /* ── BRANDS ── */
+    .brands-bar {
+      background: var(--parchment); padding: 2.5rem 0;
+      border-top: 1px solid var(--tan); border-bottom: 1px solid var(--tan);
+    }
+    .brands-bar p { font-family: var(--font-body); font-style: italic; color: var(--muted); font-size: 0.85rem; margin-bottom: 1.2rem; text-align:center; }
+    .brands-list { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    .brand-chip {
+      background: var(--white); border: 1px solid var(--tan); border-radius: 3px;
+      padding: 0.55rem 1.4rem; font-weight: 500; font-size: 0.83rem; color: var(--brown);
+    }
+
+    /* ── CTA ── */
+    .cta-band { background: var(--brick); padding: 5rem 3rem; text-align: center; position: relative; overflow: hidden; }
+    .cta-band::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse 55% 80% at 15% 50%, rgba(0,0,0,0.14) 0%, transparent 55%), radial-gradient(ellipse 55% 80% at 85% 50%, rgba(0,0,0,0.1) 0%, transparent 55%); }
+    .cta-inner { position:relative; max-width:600px; margin:0 auto; }
+    .cta-inner h2 { font-family:var(--font-display); font-size:clamp(2rem,5vw,3.2rem); font-weight:900; color:var(--white); line-height:1.1; margin-bottom:0.9rem; }
+    .cta-inner h2 em { font-style:italic; color:#fde8d5; }
+    .cta-inner p { font-family:var(--font-body); font-style:italic; color:rgba(253,250,244,0.8); margin-bottom:2.2rem; font-size:1rem; line-height:1.7; }
+    .cta-btns { display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; }
+
+    @media (max-width: 960px) {
+      .svc-section-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .svc-section-grid.flip { direction: ltr; }
+      .weather-grid { grid-template-columns: 1fr 1fr; }
+      .svc-section { padding: 4rem 0; }
+    }
+  </style>
+</head>
+<body data-page="services">
+<script src="shared.js"></script>
+
+<div class="page-header">
+  <div class="page-eyebrow">Built for Louisiana</div>
+  <h1>Services Built for<br><em>Louisiana Homes</em></h1>
+  <p>Every service we offer is shaped around the realities of living here — the heat, the humidity, and the hurricanes.</p>
+</div>
+
+<!-- QUICK NAV -->
+<div class="service-subnav">
+  <div class="container">
+    <a href="#replacement" class="subnav-btn">Roof Replacement</a>
+    <a href="#repair" class="subnav-btn">Roof Repair</a>
+    <a href="#storm" class="subnav-btn">Storm Damage</a>
+    <a href="#gutters" class="subnav-btn">Gutters & Siding</a>
+    <a href="#inspection" class="subnav-btn">Free Inspections</a>
+    <a href="#commercial" class="subnav-btn">Commercial</a>
+  </div>
+</div>
+
+<!-- 1. REPLACEMENT -->
+<section class="svc-section" id="replacement">
+  <div class="container">
+    <div class="svc-section-grid anim-up">
+      <div class="svc-panel">
+        <svg viewBox="0 0 520 340" xmlns="http://www.w3.org/2000/svg">
+          <rect width="520" height="340" fill="#bdd4e8"/>
+          <polygon points="0,200 260,58 520,200" fill="#7a6048"/>
+          <g stroke="#6a5038" stroke-width="1.8" opacity="0.45">
+            <line x1="0" y1="178" x2="260" y2="72"/><line x1="520" y1="178" x2="260" y2="72"/>
+            <line x1="0" y1="156" x2="260" y2="88"/><line x1="520" y1="156" x2="260" y2="88"/>
+            <line x1="10" y1="200" x2="260" y2="118"/><line x1="510" y1="200" x2="260" y2="118"/>
+            <line x1="55" y1="200" x2="260" y2="142"/><line x1="465" y1="200" x2="260" y2="142"/>
+            <line x1="105" y1="200" x2="260" y2="162"/><line x1="415" y1="200" x2="260" y2="162"/>
+          </g>
+          <rect x="215" y="78" width="22" height="72" fill="#5a3a28"/>
+          <rect x="210" y="74" width="32" height="8" fill="#4a2a18"/>
+          <rect x="0" y="200" width="520" height="140" fill="#c8aa88"/>
+          <rect x="80" y="200" width="360" height="140" fill="#b89870"/>
+          <rect x="180" y="218" width="160" height="122" fill="#a88860"/>
+          <rect x="222" y="248" width="76" height="92" fill="#987850"/>
+          <rect x="246" y="264" width="28" height="76" fill="#886840"/>
+        </svg>
+        <span class="svc-panel-badge">Most Popular</span>
+      </div>
+      <div class="svc-content">
+        <div class="eyebrow">Service 01</div>
+        <h2>Roof <em>Replacement</em></h2>
+        <p>When your roof has reached the end of its life — or taken too much damage to repair — a full replacement is the right move. We handle everything from tear-off to final inspection.</p>
+        <p>We work with all major roofing systems suited for Louisiana's climate, including architectural shingles, metal roofing, and flat systems for low-slope homes.</p>
+        <ul class="svc-list">
+          <li>Full tear-off of existing materials</li>
+          <li>Deck inspection and repair as needed</li>
+          <li>Architectural asphalt shingles (30-year warranty options)</li>
+          <li>Standing seam and metal panel roofing</li>
+          <li>Proper ventilation and ridge cap installation</li>
+          <li>Full site cleanup — we leave it cleaner than we found it</li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary">Get a Replacement Estimate →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. REPAIR -->
+<section class="svc-section" style="background:var(--white);" id="repair">
+  <div class="container">
+    <div class="svc-section-grid flip anim-up">
+      <div class="svc-panel">
+        <svg viewBox="0 0 520 320" xmlns="http://www.w3.org/2000/svg">
+          <rect width="520" height="320" fill="#d4c8a0"/>
+          <polygon points="0,165 260,55 520,165" fill="#7a6048"/>
+          <g fill="#3a2010" opacity="0.55">
+            <rect x="40" y="122" width="42" height="24" rx="2"/>
+            <rect x="95" y="106" width="36" height="22" rx="2"/>
+            <path d="M62,102 L78,124 L64,138" stroke="#2a1000" stroke-width="2.5" fill="none" opacity="0.7"/>
+          </g>
+          <g fill="#9a8060" opacity="0.7">
+            <rect x="270" y="104" width="36" height="21" rx="2"/>
+            <rect x="322" y="119" width="36" height="21" rx="2"/>
+            <rect x="374" y="104" width="36" height="21" rx="2"/>
+          </g>
+          <rect x="0" y="165" width="520" height="155" fill="#b89870"/>
+          <g fill="#a48060" opacity="0.55">
+            <rect x="0" y="168" width="520" height="13"/>
+            <rect x="0" y="187" width="520" height="13"/>
+            <rect x="0" y="206" width="520" height="13"/>
+            <rect x="0" y="225" width="520" height="13"/>
+            <rect x="0" y="244" width="520" height="13"/>
+          </g>
+          <rect x="90" y="165" width="340" height="155" fill="#a88860"/>
+          <rect x="200" y="185" width="120" height="135" fill="#987850"/>
+          <rect x="232" y="215" width="56" height="105" fill="#886840"/>
+        </svg>
+      </div>
+      <div class="svc-content">
+        <div class="eyebrow">Service 02</div>
+        <h2>Roof <em>Repair</em></h2>
+        <p>Not every problem needs a full replacement. If you've got a leak, missing shingles, damaged flashing, or soft spots — we diagnose it honestly and fix only what needs fixing.</p>
+        <p>We never upsell a replacement when a repair will do the job. That's the neighbor in us.</p>
+        <ul class="svc-list">
+          <li>Leak detection and targeted repair</li>
+          <li>Shingle replacement (storm damage, wind lift, age)</li>
+          <li>Flashing repair around chimneys, vents, skylights</li>
+          <li>Soffit and fascia repair</li>
+          <li>Roof deck repair and reinforcement</li>
+          <li>Emergency tarping for active leaks</li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary">Schedule a Repair →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. STORM -->
+<section class="svc-section" id="storm">
+  <div class="container">
+    <div class="svc-section-grid anim-up">
+      <div class="svc-panel">
+        <svg viewBox="0 0 520 320" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3a4858"/><stop offset="100%" stop-color="#7a8a9a"/></linearGradient></defs>
+          <rect width="520" height="320" fill="url(#sk)"/>
+          <ellipse cx="140" cy="65" rx="110" ry="42" fill="#2e3c4c" opacity="0.85"/>
+          <ellipse cx="195" cy="53" rx="88" ry="37" fill="#2e3c4c" opacity="0.75"/>
+          <ellipse cx="390" cy="58" rx="118" ry="40" fill="#2e3c4c" opacity="0.8"/>
+          <path d="M268,56 L254,94 L265,94 L248,132" stroke="#ffdd44" stroke-width="2.8" fill="none" opacity="0.92"/>
+          <g stroke="#88aabc" stroke-width="1.2" opacity="0.38">
+            <line x1="50" y1="88" x2="38" y2="130"/><line x1="115" y1="76" x2="103" y2="118"/>
+            <line x1="180" y1="90" x2="168" y2="132"/><line x1="340" y1="80" x2="328" y2="122"/>
+            <line x1="415" y1="85" x2="403" y2="127"/><line x1="478" y1="75" x2="466" y2="117"/>
+          </g>
+          <rect x="0" y="208" width="520" height="112" fill="#9a8870"/>
+          <polygon points="0,208 260,104 520,208" fill="#5a4030"/>
+          <g fill="#3a2010" opacity="0.62">
+            <rect x="70" y="162" width="52" height="30" rx="2"/>
+            <rect x="342" y="152" x2="342" width="56" height="28" rx="2"/>
+            <rect x="192" y="130" width="42" height="23" rx="2"/>
+          </g>
+          <rect x="310" y="148" width="168" height="62" fill="#4488bb" opacity="0.62" rx="2"/>
+        </svg>
+        <span class="svc-panel-badge">24/7 Emergency</span>
+      </div>
+      <div class="svc-content">
+        <div class="eyebrow">Service 03</div>
+        <h2>Storm & Hurricane<br><em>Damage</em></h2>
+        <p>We live here. When a storm hits Metairie or the parish, we're not driving in from another state — we're your neighbors, responding to our own community.</p>
+        <p>We offer 24/7 emergency tarping after a storm and then handle the full repair or replacement process with you — including your insurance claim.</p>
+        <ul class="svc-list">
+          <li>24/7 emergency response and tarping</li>
+          <li>Complete storm damage assessment and documentation</li>
+          <li>Insurance claim support — we work directly with your adjuster</li>
+          <li>Full repair or replacement based on scope</li>
+          <li>Hurricane-rated materials available</li>
+        </ul>
+        <div class="insurance-note">
+          <span style="font-size:1.3rem;flex-shrink:0;">📋</span>
+          <div><strong>We Handle Insurance Claims</strong>We've helped hundreds of Jefferson Parish homeowners through the claims process. We know the paperwork and we're on your side.</div>
+        </div>
+        <a href="contact.html" class="btn btn-primary" style="margin-top:1.2rem;">Call for Storm Help →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. GUTTERS -->
+<section class="svc-section" style="background:var(--white);" id="gutters">
+  <div class="container">
+    <div class="svc-section-grid flip anim-up">
+      <div class="svc-panel">
+        <svg viewBox="0 0 520 300" xmlns="http://www.w3.org/2000/svg">
+          <rect width="520" height="300" fill="#c8d8b8"/>
+          <rect x="0" y="150" width="520" height="150" fill="#d0b880"/>
+          <g fill="#c0a060" opacity="0.65">
+            <rect x="0" y="152" width="520" height="14"/><rect x="0" y="171" width="520" height="14"/>
+            <rect x="0" y="190" width="520" height="14"/><rect x="0" y="209" width="520" height="14"/>
+            <rect x="0" y="228" width="520" height="14"/><rect x="0" y="247" width="520" height="14"/>
+            <rect x="0" y="266" width="520" height="14"/><rect x="0" y="285" width="520" height="14"/>
+          </g>
+          <g stroke="#a88848" stroke-width="1" opacity="0.4">
+            <line x1="0" y1="164" x2="520" y2="164"/><line x1="0" y1="183" x2="520" y2="183"/>
+            <line x1="0" y1="202" x2="520" y2="202"/><line x1="0" y1="221" x2="520" y2="221"/>
+          </g>
+          <rect x="0" y="143" width="520" height="10" fill="#7a6040"/>
+          <path d="M0,144 Q260,144 520,144" stroke="#5a4028" stroke-width="6" fill="none"/>
+          <rect x="6" y="153" width="10" height="147" fill="#6a5030"/>
+          <rect x="504" y="153" width="10" height="147" fill="#6a5030"/>
+          <polygon points="0,150 260,48 520,150" fill="#8a7058"/>
+          <rect x="0" y="0" width="520" height="150" fill="#c8d8b8"/>
+          <polygon points="0,150 260,48 520,150" fill="#8a7058"/>
+          <circle cx="430" cy="150" r="42" fill="none" stroke="#b85c38" stroke-width="2.2" stroke-dasharray="5,3" opacity="0.65"/>
+          <text x="430" y="146" text-anchor="middle" fill="#b85c38" font-size="10" font-family="sans-serif" opacity="0.8" font-weight="600">K-Style</text>
+          <text x="430" y="159" text-anchor="middle" fill="#b85c38" font-size="10" font-family="sans-serif" opacity="0.8">Gutter</text>
+        </svg>
+      </div>
+      <div class="svc-content">
+        <div class="eyebrow">Service 04</div>
+        <h2>Gutters <em>&</em> Siding</h2>
+        <p>A great roof needs a great drainage system. We install and replace gutters designed to handle Louisiana's heavy rainfall — keeping water away from your foundation and siding.</p>
+        <p>We also handle exterior siding built for the intense humidity and UV exposure of South Louisiana summers.</p>
+        <ul class="svc-list">
+          <li>K-style and half-round gutter installation</li>
+          <li>Seamless gutters for a clean, leak-resistant finish</li>
+          <li>Gutter guards to reduce debris buildup</li>
+          <li>Downspout installation and rerouting</li>
+          <li>Vinyl and fiber cement siding</li>
+          <li>Soffit and fascia board replacement</li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary">Get a Gutter Estimate →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. INSPECTION -->
+<section class="svc-section" id="inspection">
+  <div class="container">
+    <div class="svc-section-grid anim-up">
+      <div class="svc-panel">
+        <svg viewBox="0 0 520 300" xmlns="http://www.w3.org/2000/svg">
+          <rect width="520" height="300" fill="#ddd4bc"/>
+          <polygon points="0,180 260,60 520,180" fill="#8a7050"/>
+          <g opacity="0.45" fill="#6a5030">
+            <rect x="0" y="165" width="520" height="12"/><rect x="0" y="149" width="430" height="12"/>
+            <rect x="0" y="133" width="340" height="12"/><rect x="0" y="117" width="250" height="12"/>
+          </g>
+          <circle cx="260" cy="100" r="33" fill="none" stroke="#b85c38" stroke-width="2.8" opacity="0.55"/>
+          <circle cx="260" cy="100" r="20" fill="rgba(184,92,56,0.08)"/>
+          <line x1="285" y1="125" x2="308" y2="148" stroke="#b85c38" stroke-width="4" stroke-linecap="round" opacity="0.55"/>
+          <rect x="312" y="100" width="172" height="172" fill="rgba(247,242,232,0.92)" rx="4"/>
+          <rect x="312" y="100" width="172" height="28" fill="#b85c38" rx="4"/>
+          <rect x="312" y="119" width="172" height="9" fill="#b85c38"/>
+          <text x="398" y="118" text-anchor="middle" fill="white" font-size="9.5" font-family="sans-serif" font-weight="700">INSPECTION REPORT</text>
+          <g fill="#4a6741" font-size="9" font-family="sans-serif">
+            <text x="326" y="148">✓  Shingle condition</text><text x="326" y="164">✓  Flashing integrity</text>
+            <text x="326" y="180">✓  Attic ventilation</text><text x="326" y="196">✓  Gutter alignment</text>
+            <text x="326" y="212">✓  Fascia &amp; soffit</text><text x="326" y="228">✓  Chimney flashing</text>
+            <text x="326" y="244">✓  Ridge cap</text>
+          </g>
+          <text x="398" y="262" text-anchor="middle" fill="#b85c38" font-size="16" font-family="serif" font-style="italic" font-weight="700">FREE</text>
+          <rect x="0" y="180" width="520" height="120" fill="#c8a880"/>
+        </svg>
+        <span class="svc-panel-badge green">Always Free</span>
+      </div>
+      <div class="svc-content">
+        <div class="eyebrow">Service 05</div>
+        <h2>Free Roof<br><em>Inspections</em></h2>
+        <p>Not sure if your roof needs work? That's exactly what we're here for. Our free inspections are thorough, honest, and come with zero sales pressure.</p>
+        <p>We'll walk the roof, check every angle, and give you a plain-English report on what we find — whether it's "you're in great shape" or "here's what needs attention."</p>
+        <ul class="svc-list">
+          <li>Full exterior inspection — no corners cut</li>
+          <li>Attic ventilation check</li>
+          <li>Detailed written report with photos</li>
+          <li>Honest recommendations, no upselling</li>
+          <li>Ideal before buying or selling a home</li>
+          <li>Post-storm damage documentation for insurance</li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary">Schedule Your Free Inspection →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. COMMERCIAL -->
+<section class="svc-section" style="background:var(--white);" id="commercial">
+  <div class="container">
+    <div class="svc-section-grid flip anim-up">
+      <div class="svc-panel">
+        <svg viewBox="0 0 520 280" xmlns="http://www.w3.org/2000/svg">
+          <rect width="520" height="280" fill="#b8c8d4"/>
+          <rect x="0" y="80" width="520" height="200" fill="#9a9888"/>
+          <g fill="#888878" opacity="0.45">
+            <rect x="0" y="82" width="520" height="3"/><rect x="0" y="106" width="520" height="3"/>
+            <rect x="0" y="130" width="520" height="3"/><rect x="0" y="154" width="520" height="3"/>
+            <rect x="0" y="178" width="520" height="3"/>
+          </g>
+          <g fill="#c8d8e8" opacity="0.55">
+            <rect x="28" y="90" width="56" height="36"/><rect x="112" y="90" width="56" height="36"/>
+            <rect x="196" y="90" width="56" height="36"/><rect x="280" y="90" width="56" height="36"/>
+            <rect x="364" y="90" width="56" height="36"/><rect x="448" y="90" width="56" height="36"/>
+          </g>
+          <rect x="0" y="70" width="520" height="14" fill="#7a7868"/>
+          <rect x="0" y="65" width="520" height="8" fill="#6a6858"/>
+          <rect x="48" y="34" width="62" height="33" fill="#6a6858" rx="3"/>
+          <rect x="182" y="40" width="50" height="26" fill="#6a6858" rx="3"/>
+          <rect x="308" y="32" width="66" height="36" fill="#6a6858" rx="3"/>
+          <rect x="426" y="38" width="56" height="28" fill="#6a6858" rx="3"/>
+          <rect x="0" y="0" width="520" height="68" fill="#b0b8a8"/>
+          <g stroke="#9a9898" stroke-width="1" opacity="0.35">
+            <line x1="0" y1="20" x2="520" y2="20"/><line x1="0" y1="40" x2="520" y2="40"/>
+          </g>
+        </svg>
+      </div>
+      <div class="svc-content">
+        <div class="eyebrow">Service 06</div>
+        <h2><em>Commercial</em><br>Roofing</h2>
+        <p>From small retail buildings to large commercial facilities in Elmwood and across Jefferson Parish — we bring the same local accountability to commercial projects that we do to every home.</p>
+        <ul class="svc-list">
+          <li>TPO flat roofing systems</li>
+          <li>EPDM rubber membrane systems</li>
+          <li>Modified bitumen roofing</li>
+          <li>Metal panel roofing for commercial structures</li>
+          <li>Roof drains, scuppers, and drainage systems</li>
+          <li>Scheduled maintenance programs available</li>
+          <li>Minimal disruption to your business operations</li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary">Discuss Your Project →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WEATHER -->
+<div class="weather-box">
+  <div class="container text-center">
+    <div class="eyebrow" style="justify-content:center; color:var(--tan);"><span style="display:inline-block;width:24px;height:1px;background:var(--tan);margin-right:0.6rem;vertical-align:middle;"></span>Built for Here</div>
+    <h2 class="section-title light">Built for <em>South Louisiana</em></h2>
+    <p style="font-family:var(--font-body);font-style:italic;color:#6a8a6c;max-width:560px;margin:0 auto;font-size:0.96rem;line-height:1.75;">Every material and method we use is chosen with Louisiana's unique climate in mind. We've seen what happens when roofs aren't built for this place.</p>
+    <div class="weather-grid">
+      <div class="w-card"><span class="w-icon">☀️</span><h4>Intense UV & Heat</h4><p>We use materials with high solar reflectance to extend roof life in Louisiana's brutal summers.</p></div>
+      <div class="w-card"><span class="w-icon">💧</span><h4>Heavy Rainfall</h4><p>Proper slope, drainage, and gutter systems designed for South Louisiana's high annual rainfall.</p></div>
+      <div class="w-card"><span class="w-icon">🌀</span><h4>Hurricane Winds</h4><p>Hurricane-rated fastening systems and impact-resistant shingles for real storm protection.</p></div>
+      <div class="w-card"><span class="w-icon">🌫️</span><h4>Humidity & Mold</h4><p>Proper ventilation and moisture barriers prevent the mold and rot Louisiana humidity causes.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- BRANDS -->
+<div class="brands-bar">
+  <div class="container">
+    <p>We install products from trusted manufacturers including:</p>
+    <div class="brands-list">
+      <span class="brand-chip">GAF</span><span class="brand-chip">Owens Corning</span>
+      <span class="brand-chip">CertainTeed</span><span class="brand-chip">Atlas Roofing</span>
+      <span class="brand-chip">TAMKO</span><span class="brand-chip">Firestone</span>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-band">
+  <div class="cta-inner">
+    <h2>Not Sure What<br><em>You Need?</em></h2>
+    <p>Call us or schedule a free inspection — we'll give you an honest answer, no pressure.</p>
+    <div class="cta-btns">
+      <a href="contact.html" class="btn btn-white">Get a Free Estimate</a>
+      <a href="tel:+15041234567" class="btn btn-outline">📞 (504) 123-4567</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
