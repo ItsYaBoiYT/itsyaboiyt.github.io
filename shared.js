@@ -1,6 +1,7 @@
 /* shared.js — inject nav + footer on every page */
 
 const NAV_HTML = `
+const NAV_HTML = `
 <nav class="site-nav" id="siteNav">
   <a href="index.html" class="nav-logo">Young's&nbsp;<span class="accent">Roofing</span>&nbsp;&amp;&nbsp;Exteriors</a>
   <ul class="nav-links" id="navLinks">
@@ -10,6 +11,9 @@ const NAV_HTML = `
     <li><a href="contact.html" data-page="contact">Contact</a></li>
     <li><a href="contact.html" class="nav-cta">📞 Free Estimate</a></li>
   </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>`;
 
 const FOOTER_HTML = `
@@ -71,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Inject footer
   document.body.insertAdjacentHTML('beforeend', FOOTER_HTML);
 
-  // Highlight active nav link
+// Highlight active nav link
   const page = document.body.dataset.page;
   document.querySelectorAll('.nav-links a[data-page]').forEach(a => {
     if (a.dataset.page === page) a.classList.add('active');
@@ -82,4 +86,19 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 20);
   }, { passive: true });
+
+  // Hamburger menu
+  const hamburger = document.getElementById('navHamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('mobile-open');
+    hamburger.classList.toggle('is-open', isOpen);
+  });
+  // Close menu when a link is clicked
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navLinks.classList.remove('mobile-open');
+      hamburger.classList.remove('is-open');
+    });
+  });
 });
