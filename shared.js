@@ -19,7 +19,7 @@ const FOOTER_HTML = `
       <div class="footer-brand">
         <a href="index.html" class="nav-logo">Young's&nbsp;<span class="accent">Roofing</span>&nbsp;&amp;&nbsp;Exteriors</a>
         <p class="footer-tagline">Born and raised in Metairie. Protecting Jefferson Parish homes since day one.</p>
-        <a href="tel:+15041234567" class="footer-phone">📞 (504) 123-4567</a>
+        <a href="tel:+15043299223" class="footer-phone">📞 (504) 329-9223</a>
       </div>
       <div class="footer-col">
         <h4>Services</h4>
