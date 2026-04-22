@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Young's Roofing & Exteriors — Metairie, LA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:     #f7f2e8;
+      --parchment: #ede6d3;
+      --warm-tan:  #d4bc96;
+      --brick:     #b85c38;
+      --brick-dark:#8f3d20;
+      --moss:      #4a6741;
+      --sky:       #7bafc4;
+      --sky-light: #c5dde8;
+      --night:     #1e2a1f;
+      --brown:     #3d2b1f;
+      --text:      #2e1f14;
+      --muted:     #7a6352;
+      --white:     #fdfaf4;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── SKY / CLOUDS HERO BG ── */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 5rem;
+    }
+
+    /* Gradient sky */
+    .hero-sky {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        #a8cfe0 0%,
+        #c5dde8 35%,
+        #deedf5 55%,
+        #edf5e0 75%,
+        #f0ead8 100%
+      );
+    }
+
+    /* SVG cloud shapes */
+    .clouds {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 55%;
+      overflow: hidden;
+    }
+
+    /* Roofline silhouette at bottom of hero */
+    .roofline {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 280px;
+    }
+
+    /* Sun */
+    .sun {
+      position: absolute;
+      top: 12%;
+      right: 18%;
+      width: 90px; height: 90px;
+      background: radial-gradient(circle, #ffe87a 30%, #ffd44a 60%, transparent 75%);
+      border-radius: 50%;
+      box-shadow: 0 0 60px 30px rgba(255,220,80,0.25);
+      animation: sunPulse 4s ease-in-out infinite;
+    }
+    @keyframes sunPulse {
+      0%, 100% { box-shadow: 0 0 60px 30px rgba(255,220,80,0.25); }
+      50%       { box-shadow: 0 0 80px 45px rgba(255,220,80,0.35); }
+    }
+
+    /* Floating clouds */
+    .cloud {
+      position: absolute;
+      background: rgba(255,255,255,0.85);
+      border-radius: 50px;
+      filter: blur(2px);
+    }
+    .cloud::before, .cloud::after {
+      content: '';
+      position: absolute;
+      background: rgba(255,255,255,0.85);
+      border-radius: 50%;
+    }
+    .c1 { width: 180px; height: 45px; top: 18%; left: 8%; animation: drift 22s linear infinite; }
+    .c1::before { width: 80px; height: 80px; top: -40px; left: 20px; }
+    .c1::after  { width: 60px; height: 60px; top: -28px; left: 70px; }
+
+    .c2 { width: 130px; height: 35px; top: 28%; left: 35%; animation: drift 30s linear infinite; opacity: 0.7; }
+    .c2::before { width: 60px; height: 60px; top: -32px; left: 15px; }
+    .c2::after  { width: 45px; height: 45px; top: -22px; left: 55px; }
+
+    .c3 { width: 220px; height: 50px; top: 12%; left: 55%; animation: drift 26s linear infinite reverse; opacity: 0.6; }
+    .c3::before { width: 90px; height: 90px; top: -50px; left: 25px; }
+    .c3::after  { width: 70px; height: 70px; top: -35px; left: 90px; }
+
+    @keyframes drift {
+      from { transform: translateX(-15px); }
+      50%  { transform: translateX(15px); }
+      to   { transform: translateX(-15px); }
+    }
+
+    /* House silhouettes */
+    .houses {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 250px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 0 2rem;
+      animation: fadeUp 1s ease both;
+    }
+
+    .hero-neighborhood {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--moss);
+      color: #d4edcc;
+      padding: 0.4rem 1.1rem;
+      border-radius: 2rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1.4rem;
+    }
+    .hero-neighborhood::before { content: '📍'; font-size: 0.9rem; }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      color: var(--brown);
+      margin-bottom: 1.2rem;
+      text-shadow: 0 2px 20px rgba(255,255,255,0.6);
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--brick);
+    }
+
+    .hero-sub {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto 2.2rem;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-main {
+      background: var(--brick);
+      color: var(--white);
+      padding: 0.9rem 2.2rem;
+      border-radius: 2px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(184,92,56,0.3);
+    }
+    .btn-main:hover {
+      background: var(--brick-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(184,92,56,0.4);
+    }
+
+    .btn-soft {
+      background: rgba(255,255,255,0.7);
+      color: var(--brown);
+      padding: 0.9rem 2.2rem;
+      border-radius: 2px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(61,43,31,0.15);
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-soft:hover { background: rgba(255,255,255,0.9); transform: translateY(-2px); }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 3rem;
+      background: rgba(247,242,232,0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(61,43,31,0.1);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--brown);
+      text-decoration: none;
+    }
+    .nav-logo span {
+      color: var(--brick);
+      font-style: italic;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--brick); }
+
+    .nav-phone {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--brick);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-phone:hover { color: var(--brick-dark); }
+
+    /* ── NEIGHBORHOOD STRIP ── */
+    .neighborhood-strip {
+      background: var(--night);
+      color: #a8c0aa;
+      padding: 0.9rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    .neighborhood-strip span::before { content: '🌿 '; }
+
+    /* ── INTRO ── */
+    .intro {
+      padding: 6rem 3rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .intro-text .eyebrow {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 0.9rem;
+      color: var(--brick);
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .intro-text .eyebrow::before {
+      content: '';
+      width: 30px; height: 1px;
+      background: var(--brick);
+    }
+
+    .intro-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900;
+      line-height: 1.15;
+      color: var(--brown);
+      margin-bottom: 1.4rem;
+    }
+
+    .intro-text p {
+      font-family: 'Lora', serif;
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .intro-text p strong {
+      color: var(--brown);
+      font-weight: 600;
+    }
+
+    .intro-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .intro-card {
+      background: var(--white);
+      border: 1px solid var(--parchment);
+      border-radius: 4px;
+      padding: 1.6rem 1.4rem;
+      text-align: center;
+      box-shadow: 0 2px 16px rgba(61,43,31,0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .intro-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(61,43,31,0.1);
+    }
+
+    .intro-card-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--brick);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .intro-card-label {
+      font-size: 0.78rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ── SERVICES ── */
+    .services {
+      background: var(--night);
+      padding: 6rem 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* subtle leaf pattern bg */
+    .services::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle at 20% 80%, rgba(74,103,65,0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(74,103,65,0.1) 0%, transparent 50%);
+    }
+
+    .services-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .section-label {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 0.9rem;
+      color: var(--warm-tan);
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .section-label::before { content: ''; width: 28px; height: 1px; background: var(--warm-tan); }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900;
+      color: var(--cream);
+      margin-bottom: 3rem;
+      line-height: 1.1;
+    }
+    .section-title em { color: var(--warm-tan); font-style: italic; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 4px;
+      padding: 2rem 1.6rem;
+      transition: background 0.3s, border-color 0.3s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--brick);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform 0.35s ease;
+    }
+    .service-card:hover {
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(184,92,56,0.3);
+      transform: translateY(-3px);
+    }
+    .service-card:hover::after { transform: scaleY(1); }
+
+    .service-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 0.6rem;
+    }
+
+    .service-card p {
+      font-size: 0.87rem;
+      line-height: 1.7;
+      color: #8a9e8c;
+    }
+
+    /* ── NEIGHBORHOOD PRIDE ── */
+    .pride {
+      padding: 6rem 3rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .pride-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .pride-map {
+      position: relative;
+    }
+
+    /* Illustrated "map" card */
+    .map-card {
+      background: var(--white);
+      border: 1px solid var(--parchment);
+      border-radius: 8px;
+      padding: 2.5rem;
+      box-shadow: 0 8px 40px rgba(61,43,31,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .map-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(61,43,31,0.04) 40px),
+        repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(61,43,31,0.04) 40px);
+    }
+
+    .map-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--brown);
+      margin-bottom: 1.4rem;
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .map-areas {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      position: relative;
+    }
+
+    .map-area {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.7rem 1rem;
+      background: rgba(247,242,232,0.8);
+      border: 1px solid var(--parchment);
+      border-radius: 3px;
+      font-size: 0.9rem;
+      color: var(--brown);
+      font-weight: 500;
+      transition: background 0.2s, border-color 0.2s;
+      cursor: default;
+    }
+    .map-area:hover { background: var(--parchment); border-color: var(--warm-tan); }
+    .map-area-dot {
+      width: 10px; height: 10px;
+      background: var(--brick);
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px rgba(184,92,56,0.2);
+      flex-shrink: 0;
+    }
+    .map-area-dot.moss { background: var(--moss); box-shadow: 0 0 0 3px rgba(74,103,65,0.2); }
+    .map-area-dot.sky { background: var(--sky); box-shadow: 0 0 0 3px rgba(123,175,196,0.2); }
+    .map-area sub {
+      margin-left: auto;
+      font-size: 0.72rem;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    .pride-text .section-label { color: var(--brick); }
+    .pride-text .section-label::before { background: var(--brick); }
+    .pride-text .section-title { color: var(--brown); }
+
+    .pride-text p {
+      font-family: 'Lora', serif;
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .pride-quote {
+      background: var(--parchment);
+      border-left: 3px solid var(--brick);
+      padding: 1.4rem 1.6rem;
+      margin: 1.8rem 0;
+      border-radius: 0 4px 4px 0;
+    }
+    .pride-quote p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--brown);
+      margin-bottom: 0.5rem;
+      line-height: 1.6;
+    }
+    .pride-quote cite {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-style: normal;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ── PROCESS ── */
+    .process {
+      background: var(--parchment);
+      padding: 6rem 3rem;
+    }
+    .process-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .process .section-label { color: var(--brick); }
+    .process .section-label::before { background: var(--brick); }
+    .process .section-title { color: var(--brown); }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .p-step {
+      position: relative;
+      text-align: center;
+      animation: fadeUp 0.7s ease both;
+    }
+    .p-step:nth-child(1) { animation-delay: 0.1s; }
+    .p-step:nth-child(2) { animation-delay: 0.2s; }
+    .p-step:nth-child(3) { animation-delay: 0.3s; }
+    .p-step:nth-child(4) { animation-delay: 0.4s; }
+
+    .p-step-icon {
+      width: 64px; height: 64px;
+      background: var(--white);
+      border: 2px solid var(--warm-tan);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin: 0 auto 1.2rem;
+      box-shadow: 0 4px 16px rgba(61,43,31,0.1);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .p-step:hover .p-step-icon {
+      border-color: var(--brick);
+      box-shadow: 0 4px 20px rgba(184,92,56,0.2);
+    }
+
+    .p-step h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--brown);
+      margin-bottom: 0.5rem;
+    }
+    .p-step p {
+      font-size: 0.85rem;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials {
+      padding: 6rem 3rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .testimonials .section-label { color: var(--brick); }
+    .testimonials .section-label::before { background: var(--brick); }
+    .testimonials .section-title { color: var(--brown); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .t-card {
+      background: var(--white);
+      border: 1px solid var(--parchment);
+      border-radius: 6px;
+      padding: 2rem;
+      box-shadow: 0 2px 16px rgba(61,43,31,0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .t-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(61,43,31,0.1);
+    }
+
+    .t-stars { color: #e8a020; font-size: 0.9rem; margin-bottom: 0.8rem; }
+
+    .t-card blockquote {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 0.92rem;
+      line-height: 1.75;
+      color: var(--muted);
+      margin-bottom: 1.4rem;
+    }
+
+    .t-reviewer {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .t-avatar {
+      width: 38px; height: 38px;
+      background: var(--brick);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+    .t-name {
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: var(--brown);
+    }
+    .t-loc {
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-family: 'Lora', serif;
+      font-style: italic;
+    }
+
+    /* ── CTA ── */
+    .cta {
+      background: var(--brick);
+      padding: 5rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 50% 80% at 20% 50%, rgba(0,0,0,0.15) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 80% at 80% 50%, rgba(0,0,0,0.1) 0%, transparent 60%);
+    }
+
+    /* little roof deco */
+    .cta::after {
+      content: '🏠';
+      position: absolute;
+      font-size: 8rem;
+      opacity: 0.06;
+      bottom: -1rem;
+      right: 3rem;
+    }
+
+    .cta-inner { position: relative; max-width: 640px; margin: 0 auto; }
+
+    .cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .cta h2 em {
+      font-style: italic;
+      color: #fde8d5;
+    }
+
+    .cta p {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: rgba(253,250,244,0.8);
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+
+    .cta-btns {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-cta-white {
+      background: var(--white);
+      color: var(--brick);
+      padding: 0.9rem 2.3rem;
+      border-radius: 2px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-cta-white:hover { background: var(--cream); transform: translateY(-2px); }
+
+    .btn-cta-outline {
+      background: transparent;
+      border: 2px solid rgba(255,255,255,0.5);
+      color: var(--white);
+      padding: 0.9rem 2.3rem;
+      border-radius: 2px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+    }
+    .btn-cta-outline:hover {
+      border-color: var(--white);
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-2px);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--night);
+      padding: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--cream);
+    }
+    .footer-logo span { color: #c87c5a; font-style: italic; }
+
+    .footer-tagline {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 0.82rem;
+      color: #6a8a6c;
+      margin-top: 0.2rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .footer-links a {
+      color: #5a7a5c;
+      font-size: 0.8rem;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--warm-tan); }
+
+    .footer-copy {
+      font-size: 0.78rem;
+      color: #3a5a3c;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .intro { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
+      .services { padding: 5rem 1.5rem; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .pride { padding: 4rem 1.5rem; }
+      .pride-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .process { padding: 5rem 1.5rem; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .testimonials { padding: 5rem 1.5rem; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .cta { padding: 4rem 1.5rem; }
+      footer { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; }
+      .neighborhood-strip { padding: 0.9rem 1.5rem; gap: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Young's <span>Roofing</span> & Exteriors</a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#neighborhood">Our Area</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+    </ul>
+    <a href="tel:+15041234567" class="nav-phone">📞 (504) 123-4567</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-sky"></div>
+    <div class="clouds">
+      <div class="sun"></div>
+      <div class="cloud c1"></div>
+      <div class="cloud c2"></div>
+      <div class="cloud c3"></div>
+    </div>
+
+    <!-- SVG House Silhouettes -->
+    <svg class="houses" viewBox="0 0 1440 250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice">
+      <!-- Sky fade gradient -->
+      <defs>
+        <linearGradient id="skyFade" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#e8f0d8" stop-opacity="0"/>
+          <stop offset="100%" stop-color="#e8f0d8" stop-opacity="1"/>
+        </linearGradient>
+      </defs>
+
+      <!-- Far background houses (lighter) -->
+      <g fill="#c8d8b0" opacity="0.5">
+        <polygon points="100,180 140,130 180,180"/>
+        <rect x="110" y="180" width="60" height="70"/>
+        <polygon points="220,175 265,120 310,175"/>
+        <rect x="230" y="175" width="70" height="75"/>
+        <polygon points="580,185 625,125 670,185"/>
+        <rect x="592" y="185" width="66" height="65"/>
+        <polygon points="900,178 950,118 1000,178"/>
+        <rect x="912" y="178" width="76" height="72"/>
+        <polygon points="1200,180 1248,122 1296,180"/>
+        <rect x="1212" y="180" width="72" height="70"/>
+      </g>
+
+      <!-- Mid houses -->
+      <g fill="#a8bc8a" opacity="0.65">
+        <polygon points="0,200 55,138 110,200"/>
+        <rect x="10" y="200" width="90" height="50"/>
+        <rect x="38" y="215" width="24" height="35"/>
+
+        <polygon points="320,195 385,130 450,195"/>
+        <rect x="332" y="195" width="106" height="55"/>
+        <rect x="370" y="208" width="30" height="42"/>
+        <rect x="335" y="210" width="22" height="20"/>
+
+        <polygon points="700,198 760,132 820,198"/>
+        <rect x="712" y="198" width="96" height="52"/>
+        <rect x="748" y="210" width="28" height="40"/>
+
+        <polygon points="1050,192 1110,128 1170,192"/>
+        <rect x="1062" y="192" width="96" height="58"/>
+        <rect x="1098" y="204" width="26" height="46"/>
+
+        <polygon points="1300,196 1370,128 1440,196"/>
+        <rect x="1310" y="196" width="130" height="54"/>
+        <rect x="1360" y="210" width="28" height="40"/>
+      </g>
+
+      <!-- Foreground houses (darkest) -->
+      <g fill="#7a9660">
+        <polygon points="150,210 225,145 300,210"/>
+        <rect x="165" y="210" width="120" height="40"/>
+        <rect x="205" y="218" width="38" height="32"/>
+        <rect x="168" y="222" width="25" height="18"/>
+
+        <polygon points="480,208 560,138 640,208"/>
+        <rect x="495" y="208" width="130" height="42"/>
+        <rect x="538" y="216" width="36" height="34"/>
+        <rect x="498" y="224" width="26" height="20"/>
+        <!-- chimney -->
+        <rect x="530" y="155" width="12" height="25" fill="#6a8450"/>
+
+        <polygon points="840,205 920,135 1000,205"/>
+        <rect x="855" y="205" width="130" height="45"/>
+        <rect x="895" y="214" width="38" height="36"/>
+        <rect x="858" y="222" width="26" height="18"/>
+        <rect x="875" y="150" width="12" height="28" fill="#6a8450"/>
+
+        <polygon points="1180,210 1260,140 1340,210"/>
+        <rect x="1195" y="210" width="130" height="40"/>
+        <rect x="1235" y="218" width="36" height="32"/>
+        <rect x="1198" y="226" width="24" height="16"/>
+      </g>
+
+      <!-- Ground -->
+      <rect x="0" y="240" width="1440" height="10" fill="#6a8450" opacity="0.4"/>
+      <rect x="0" y="245" width="1440" height="6" fill="url(#skyFade)"/>
+    </svg>
+
+    <div class="hero-content">
+      <div class="hero-neighborhood">Serving Metairie & Greater New Orleans</div>
+      <h1>Your Neighbor.<br>Your <em>Roofer.</em></h1>
+      <p class="hero-sub">Young's Roofing & Exteriors Co. — born and raised right here. We protect the homes that make Metairie feel like home.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-main">Get a Free Estimate</a>
+        <a href="#services" class="btn-soft">See Our Work</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEIGHBORHOOD STRIP -->
+  <div class="neighborhood-strip">
+    <span>Metairie</span>
+    <span>Kenner</span>
+    <span>River Ridge</span>
+    <span>Jefferson</span>
+    <span>Elmwood</span>
+    <span>Harahan</span>
+    <span>New Orleans</span>
+  </div>
+
+  <!-- INTRO -->
+  <section class="intro">
+    <div class="intro-text">
+      <div class="eyebrow">About Us</div>
+      <h2>We Know These Streets.<br>We Know These Roofs.</h2>
+      <p>We're not a 1-800 company that blows in after a storm and disappears. <strong>Young's Roofing & Exteriors Co.</strong> is local — our crew lives, shops, and raises families right here in Jefferson Parish.</p>
+      <p>That means we know Louisiana weather like the back of our hand. The humidity, the heat, the hurricane season. We build and repair roofs that can take it — because we've lived through it too.</p>
+    </div>
+    <div class="intro-cards">
+      <div class="intro-card">
+        <div class="intro-card-num">20+</div>
+        <div class="intro-card-label">Years Local</div>
+      </div>
+      <div class="intro-card">
+        <div class="intro-card-num">500+</div>
+        <div class="intro-card-label">Roofs Done</div>
+      </div>
+      <div class="intro-card">
+        <div class="intro-card-num">100%</div>
+        <div class="intro-card-label">Satisfaction</div>
+      </div>
+      <div class="intro-card">
+        <div class="intro-card-num">24hr</div>
+        <div class="intro-card-label">Storm Response</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="services-inner">
+      <div class="section-label">What We Do</div>
+      <div class="section-title">Protecting <em>Every Roof</em><br>In the Parish</div>
+      <div class="services-grid">
+        <div class="service-card">
+          <span class="service-icon">🏠</span>
+          <h3>Roof Replacement</h3>
+          <p>Full tear-off and new installations using quality shingles, metal, and flat roof systems built for Louisiana's climate.</p>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">🔧</span>
+          <h3>Roof Repair</h3>
+          <p>Leaks, missing shingles, flashing issues — we diagnose and fix fast so the inside of your home stays dry.</p>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">⛈️</span>
+          <h3>Storm & Hurricane Damage</h3>
+          <p>When the next storm rolls through, we're the first call you make. We handle repairs and work with your insurance company directly.</p>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">🏗️</span>
+          <h3>Gutters & Siding</h3>
+          <p>Complete gutter installation and exterior siding that stands up to south Louisiana heat and rain.</p>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">🔍</span>
+          <h3>Free Roof Inspections</h3>
+          <p>Not sure what condition your roof is in? We'll come out and tell you honestly — no pressure, no upsell.</p>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">📋</span>
+          <h3>Insurance Claim Help</h3>
+          <p>We've helped hundreds of local homeowners navigate claims. We know the process and we're in your corner.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEIGHBORHOOD PRIDE -->
+  <section class="pride" id="neighborhood">
+    <div class="pride-grid">
+      <div class="pride-map">
+        <div class="map-card">
+          <div class="map-title">🗺️ Areas We Proudly Serve</div>
+          <div class="map-areas">
+            <div class="map-area"><span class="map-area-dot"></span> Metairie <sub>Our Home Base</sub></div>
+            <div class="map-area"><span class="map-area-dot"></span> Kenner <sub>Just down the road</sub></div>
+            <div class="map-area"><span class="map-area-dot moss"></span> River Ridge <sub>Neighbor to neighbor</sub></div>
+            <div class="map-area"><span class="map-area-dot moss"></span> Harahan <sub>Family community</sub></div>
+            <div class="map-area"><span class="map-area-dot sky"></span> Jefferson <sub>Serving the parish</sub></div>
+            <div class="map-area"><span class="map-area-dot sky"></span> Elmwood <sub>Commercial & residential</sub></div>
+            <div class="map-area"><span class="map-area-dot"></span> Greater New Orleans <sub>And surrounding areas</sub></div>
+          </div>
+        </div>
+      </div>
+      <div class="pride-text">
+        <div class="section-label">Rooted Here</div>
+        <div class="section-title">This Isn't Just<br><em>a Job to Us</em></div>
+        <p>When we fix a roof on Transcontinental Drive or replace gutters off Causeway, we're not just doing a job — we're taking care of our community. These are our neighbors, our kids' schools, our parishes.</p>
+
+        <div class="pride-quote">
+          <p>"After Ida tore through, I didn't know who to call. Young's showed up the next morning, tarped my roof same day, and had it fully replaced within two weeks. They felt like family."</p>
+          <cite>— Sandra M., Metairie, LA</cite>
+        </div>
+
+        <p>That's the kind of reputation we've built — one neighbor at a time — and it's something we'll never take for granted.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="process">
+    <div class="process-inner">
+      <div class="section-label">Simple & Honest</div>
+      <div class="section-title">How It Works</div>
+      <div class="process-steps">
+        <div class="p-step">
+          <div class="p-step-icon">🔍</div>
+          <h3>Free Inspection</h3>
+          <p>We come to you, walk the roof, and give you an honest picture of what's going on — no charge, no obligation.</p>
+        </div>
+        <div class="p-step">
+          <div class="p-step-icon">📄</div>
+          <h3>Clear Estimate</h3>
+          <p>You get a plain-English quote. No confusing line items, no bait-and-switch. Just what it costs and why.</p>
+        </div>
+        <div class="p-step">
+          <div class="p-step-icon">🔨</div>
+          <h3>We Get to Work</h3>
+          <p>Our local crew shows up on time, works clean, and treats your home the way we'd want ours treated.</p>
+        </div>
+        <div class="p-step">
+          <div class="p-step-icon">🤝</div>
+          <h3>You're Covered</h3>
+          <p>Final walkthrough, full cleanup, and your warranty paperwork handed right to you. Job done right.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="reviews">
+    <div class="section-label">From the Neighborhood</div>
+    <div class="section-title">What Folks <em>Are Saying</em></div>
+    <div class="testimonials-grid">
+      <div class="t-card">
+        <div class="t-stars">★★★★★</div>
+        <blockquote>"Young's replaced our entire roof after Ida and honestly it was the smoothest experience we've ever had with a contractor. They handled our insurance claim and kept us in the loop the whole time. Real pros."</blockquote>
+        <div class="t-reviewer">
+          <div class="t-avatar">MR</div>
+          <div>
+            <div class="t-name">Mike R.</div>
+            <div class="t-loc">Metairie, LA</div>
+          </div>
+        </div>
+      </div>
+      <div class="t-card">
+        <div class="t-stars">★★★★★</div>
+        <blockquote>"I've used two other roofing companies before and neither came close to the communication and quality Young's provided. You can tell they actually care about doing good work in their own community."</blockquote>
+        <div class="t-reviewer">
+          <div class="t-avatar">TL</div>
+          <div>
+            <div class="t-name">Tammy L.</div>
+            <div class="t-loc">River Ridge, LA</div>
+          </div>
+        </div>
+      </div>
+      <div class="t-card">
+        <div class="t-stars">★★★★★</div>
+        <blockquote>"Called on a Tuesday morning with an active roof leak. They were at my house by noon with a tarp and had a repair estimate to me that evening. That kind of response doesn't happen with big companies."</blockquote>
+        <div class="t-reviewer">
+          <div class="t-avatar">DB</div>
+          <div>
+            <div class="t-name">David B.</div>
+            <div class="t-loc">Kenner, LA</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="contact">
+    <div class="cta-inner">
+      <h2>Ready to Protect<br><em>Your Home?</em></h2>
+      <p>Give us a call or send a message — we'll get back to you same day. Free estimates, honest answers, no pressure.</p>
+      <div class="cta-btns">
+        <a href="tel:+15041234567" class="btn-cta-white">📞 (504) 123-4567</a>
+        <a href="mailto:info@youngsroofing.com" class="btn-cta-outline">Send Us a Message</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <div class="footer-logo">Young's <span>Roofing</span> & Exteriors Co.</div>
+      <div class="footer-tagline">Serving Metairie & Jefferson Parish since day one.</div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#neighborhood">Our Area</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 Young's Roofing & Exteriors Co. · Licensed & Insured · Jefferson Parish, LA</div>
+  </footer>
+
+</body>
+</html>
