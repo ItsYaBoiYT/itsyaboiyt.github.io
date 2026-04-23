@@ -4,137 +4,294 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Young's Roofing & Exteriors Co. — Metairie, LA</title>
-
-  <!-- Favicon / browser tab icon -->
   <link rel="icon" type="image/svg+xml" href="logo-icon.svg"/>
-  <link rel="shortcut icon" href="logo-icon.svg"/>
-
-  <!-- Preview image when sharing link (Open Graph) -->
   <meta property="og:title" content="Young's Roofing & Exteriors Co. — Metairie, LA"/>
-  <meta property="og:description" content="Born and raised in Metairie. Expert roofing, storm damage repair, gutters & siding across Jefferson Parish."/>
+  <meta property="og:description" content="Expert roofing, storm damage repair, gutters & siding across Jefferson Parish."/>
   <meta property="og:image" content="preview.png"/>
   <meta property="og:type" content="website"/>
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:image" content="preview.png"/>
-
   <link rel="stylesheet" href="style.css"/>
   <style>
-    .hero { min-height:100vh; position:relative; overflow:hidden; display:flex; flex-direction:column; justify-content:flex-end; padding-bottom:6rem; }
-    .hero-sky { position:absolute; inset:0; background:linear-gradient(180deg,#9fcde0 0%,#bddaeb 30%,#d8ecf4 52%,#e8f4e2 70%,#f0ead8 100%); }
-    .sun { position:absolute; top:11%; right:16%; width:86px; height:86px; background:radial-gradient(circle,#ffe87a 28%,#ffd44a 58%,transparent 75%); border-radius:50%; box-shadow:0 0 60px 28px rgba(255,218,70,0.22); animation:sunBreath 5s ease-in-out infinite; }
-    @keyframes sunBreath { 0%,100%{box-shadow:0 0 60px 28px rgba(255,218,70,0.22);}50%{box-shadow:0 0 90px 42px rgba(255,218,70,0.32);} }
-    .cloud{position:absolute;background:rgba(255,255,255,0.82);border-radius:50px;filter:blur(1.5px);}
-    .cloud::before,.cloud::after{content:'';position:absolute;background:rgba(255,255,255,0.82);border-radius:50%;}
-    .c1{width:170px;height:42px;top:17%;left:7%;animation:cloudDrift 24s ease-in-out infinite;}
-    .c1::before{width:76px;height:76px;top:-38px;left:18px;}.c1::after{width:58px;height:58px;top:-28px;left:68px;}
-    .c2{width:125px;height:32px;top:27%;left:33%;animation:cloudDrift 32s ease-in-out infinite;opacity:.65;}
-    .c2::before{width:56px;height:56px;top:-30px;left:12px;}.c2::after{width:42px;height:42px;top:-20px;left:52px;}
-    .c3{width:210px;height:48px;top:11%;left:54%;animation:cloudDrift 28s ease-in-out infinite reverse;opacity:.58;}
-    .c3::before{width:88px;height:88px;top:-48px;left:22px;}.c3::after{width:68px;height:68px;top:-34px;left:88px;}
-    @keyframes cloudDrift{0%,100%{transform:translateX(-12px);}50%{transform:translateX(12px);}}
-    .houses{position:absolute;bottom:0;left:0;right:0;height:260px;}
-    .hero-content{position:relative;z-index:10;text-align:center;padding:0 2rem;animation:fadeUp 0.9s ease both;}
-    .hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:var(--moss);color:#cceacc;padding:0.4rem 1.1rem;border-radius:2rem;font-size:0.73rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1.4rem;}
-    .hero-badge::before{content:'📍';font-size:0.85rem;}
-    .hero h1{font-family:var(--font-display);font-size:clamp(3rem,8vw,6rem);font-weight:900;line-height:1.0;color:var(--brown);margin-bottom:1.1rem;text-shadow:0 2px 24px rgba(255,255,255,0.55);}
-    .hero h1 em{font-style:italic;color:var(--brick);}
-    .hero-sub{font-family:var(--font-body);font-style:italic;font-size:1.05rem;color:var(--muted);max-width:500px;margin:0 auto 2.2rem;line-height:1.75;}
-    .hero-btns{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;}
-    .stats-bar{background:var(--night);display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid rgba(255,255,255,0.05);}
-    .stat-item{padding:1.8rem 1rem;text-align:center;border-right:1px solid rgba(255,255,255,0.05);}
-    .stat-item:last-child{border-right:none;}
-    .stat-num{font-family:var(--font-display);font-size:2.2rem;font-weight:900;color:var(--tan);line-height:1;margin-bottom:0.25rem;}
-    .stat-label{font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:#5a7a5c;}
-    .intro{padding:6rem 0;}
-    .intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
-    .intro-text p{font-family:var(--font-body);font-size:1rem;line-height:1.85;color:var(--muted);margin-bottom:0.9rem;}
-    .intro-text p strong{color:var(--brown);font-weight:600;}
-    .stat-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
-    .stat-card{padding:1.8rem 1.5rem;text-align:center;}
-    .stat-card-num{font-family:var(--font-display);font-size:2.6rem;font-weight:900;color:var(--brick);line-height:1;margin-bottom:0.3rem;}
-    .stat-card-lbl{font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);}
-    .services-section{padding:6rem 0;background:var(--night);}
-    .services-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3rem;}
-    .services-head .eyebrow{color:var(--tan);}.services-head .eyebrow::before{background:var(--tan);}
-    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.06);border-radius:6px;overflow:hidden;}
-    .svc-card{background:rgba(255,255,255,0.03);padding:2.2rem 1.8rem;position:relative;overflow:hidden;text-decoration:none;color:inherit;display:block;transition:background 0.25s;}
-    .svc-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--brick);transform:scaleX(0);transform-origin:left;transition:transform 0.35s ease;}
-    .svc-card:hover{background:rgba(255,255,255,0.065);}.svc-card:hover::after{transform:scaleX(1);}
-    .svc-icon{font-size:1.75rem;margin-bottom:1rem;display:block;}
-    .svc-num{position:absolute;top:1.2rem;right:1.6rem;font-family:var(--font-display);font-size:3rem;font-weight:900;color:rgba(255,255,255,0.04);line-height:1;transition:color 0.3s;}
-    .svc-card:hover .svc-num{color:rgba(184,92,56,0.07);}
-    .svc-card h3{font-family:var(--font-display);font-weight:700;font-size:1.05rem;color:var(--cream);margin-bottom:0.55rem;line-height:1.2;}
-    .svc-card p{font-size:0.85rem;line-height:1.68;color:#7a9a7c;}
-    .svc-arrow{display:inline-flex;align-items:center;gap:0.4rem;margin-top:1rem;font-size:0.78rem;font-weight:500;color:var(--tan);letter-spacing:0.05em;transition:gap 0.2s;}
-    .svc-card:hover .svc-arrow{gap:0.7rem;}
-    .neighborhood{padding:6rem 0;}
-    .neighborhood-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
-    .map-card{background:var(--white);border:1px solid var(--parchment);border-radius:8px;padding:2.2rem;box-shadow:var(--shadow-md);position:relative;overflow:hidden;}
-    .map-card::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(61,43,31,0.03) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(61,43,31,0.03) 40px);}
-    .map-card>*{position:relative;}
-    .map-heading{font-family:var(--font-display);font-weight:700;font-size:1rem;color:var(--brown);margin-bottom:1.2rem;display:flex;align-items:center;gap:0.5rem;}
-    .map-areas{display:flex;flex-direction:column;gap:0.55rem;}
-    .map-area{display:flex;align-items:center;gap:0.8rem;padding:0.65rem 1rem;background:rgba(247,242,232,0.8);border:1px solid var(--parchment);border-radius:3px;font-size:0.88rem;font-weight:500;color:var(--brown);transition:background 0.2s,border-color 0.2s;}
-    .map-area:hover{background:var(--parchment);border-color:var(--tan);}
-    .dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
-    .dot-brick{background:var(--brick);box-shadow:0 0 0 3px rgba(184,92,56,0.18);}
-    .dot-moss{background:var(--moss);box-shadow:0 0 0 3px rgba(74,103,65,0.18);}
-    .dot-sky{background:var(--sky);box-shadow:0 0 0 3px rgba(123,175,196,0.18);}
-    .map-area sub{margin-left:auto;font-size:0.7rem;color:var(--muted);font-weight:300;}
-    .neighborhood-text p{font-family:var(--font-body);font-size:0.97rem;line-height:1.85;color:var(--muted);margin-bottom:0.9rem;}
-    .pull-quote{background:var(--parchment);border-left:3px solid var(--brick);padding:1.3rem 1.5rem;border-radius:0 4px 4px 0;margin:1.5rem 0;}
-    .pull-quote p{font-family:var(--font-display);font-style:italic;font-size:0.98rem;color:var(--brown);line-height:1.6;margin-bottom:0.4rem!important;}
-    .pull-quote cite{font-size:0.75rem;color:var(--muted);font-style:normal;letter-spacing:0.06em;text-transform:uppercase;}
-    .process-section{padding:6rem 0;background:var(--parchment);}
-    .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:3rem;position:relative;}
-    .process-grid::before{content:'';position:absolute;top:2rem;left:2rem;right:2rem;height:1px;background:linear-gradient(90deg,transparent,var(--tan) 20%,var(--brick) 50%,var(--tan) 80%,transparent);}
-    .p-step{padding-top:4.5rem;position:relative;}
-    .p-dot{position:absolute;top:1.2rem;left:0;width:1.7rem;height:1.7rem;background:var(--brick);color:var(--white);border-radius:2px;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:0.85rem;font-weight:700;}
-    .p-step h3{font-family:var(--font-display);font-weight:700;font-size:1rem;color:var(--brown);margin-bottom:0.5rem;}
-    .p-step p{font-size:0.85rem;line-height:1.65;color:var(--muted);}
-    .reviews-section{padding:6rem 0;}
-    .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:3rem;}
-    .review-card{padding:2rem;}
-    .r-stars{color:#e8a020;font-size:0.88rem;margin-bottom:0.75rem;letter-spacing:0.1em;}
-    .review-card blockquote{font-family:var(--font-body);font-style:italic;font-size:0.92rem;line-height:1.78;color:var(--muted);margin-bottom:1.4rem;}
-    .reviewer{display:flex;align-items:center;gap:0.75rem;}
-    .r-avatar{width:38px;height:38px;border-radius:50%;background:var(--brick);color:var(--white);font-family:var(--font-display);font-weight:700;font-size:0.88rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-    .r-name{font-weight:600;font-size:0.87rem;color:var(--brown);}
-    .r-loc{font-size:0.74rem;color:var(--muted);font-family:var(--font-body);font-style:italic;}
-    .reviews-more{text-align:center;margin-top:2.5rem;}
-    .cta-band{background:var(--brick);padding:5rem 3rem;text-align:center;position:relative;overflow:hidden;}
-    .cta-band::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 80% at 15% 50%,rgba(0,0,0,0.14) 0%,transparent 55%),radial-gradient(ellipse 50% 80% at 85% 50%,rgba(0,0,0,0.1) 0%,transparent 55%);}
-    .cta-band::after{content:'🏠';position:absolute;font-size:9rem;opacity:0.055;bottom:-1.5rem;right:2rem;}
-    .cta-inner{position:relative;max-width:620px;margin:0 auto;}
-    .cta-inner h2{font-family:var(--font-display);font-size:clamp(2rem,5vw,3.4rem);font-weight:900;color:var(--white);line-height:1.08;margin-bottom:0.9rem;}
-    .cta-inner h2 em{font-style:italic;color:#fde8d5;}
-    .cta-inner p{font-family:var(--font-body);font-style:italic;color:rgba(253,250,244,0.8);margin-bottom:2.2rem;font-size:1rem;line-height:1.7;}
-    .cta-btns{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;}
-    @media(max-width:960px){
-      .stats-bar{grid-template-columns:repeat(2,1fr);}
-      .intro-grid,.neighborhood-grid{grid-template-columns:1fr;gap:3rem;}
-      .services-grid{grid-template-columns:1fr 1fr;}
-      .process-grid{grid-template-columns:1fr 1fr;}
-      .process-grid::before{display:none;}
-      .p-step{padding-top:3.8rem;}
-      .reviews-grid{grid-template-columns:1fr;}
-      .services-head{flex-direction:column;align-items:flex-start;gap:1rem;}
-      .intro,.services-section,.neighborhood,.process-section,.reviews-section{padding:4rem 0;}
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh; position: relative; overflow: hidden;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 7rem 0 5rem;
     }
-    @media(max-width:600px){
-      .services-grid{grid-template-columns:1fr;}
-      .process-grid{grid-template-columns:1fr;}
-      .stat-cards{grid-template-columns:1fr 1fr;}
+
+    /* Video background container */
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: #071420; /* fallback color while video loads */
+    }
+    .hero-video {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0.45; /* keep it subtle so text stays readable */
+    }
+
+    /* Dark overlay over the video */
+    .hero-bg::before {
+      content: ''; position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(
+        160deg,
+        rgba(5,14,24,0.75) 0%,
+        rgba(7,18,30,0.65) 50%,
+        rgba(5,14,24,0.80) 100%
+      );
+    }
+
+    /* Gold light leak */
+    .hero-bg::after {
+      content: ''; position: absolute; inset: 0; z-index: 2;
+      background:
+        radial-gradient(ellipse 50% 40% at 0% 0%, rgba(201,168,76,0.1) 0%, transparent 55%),
+        radial-gradient(ellipse 35% 45% at 100% 100%, rgba(5,14,24,0.5) 0%, transparent 55%);
+    }
+
+    .hero-corner {
+      position: absolute; top: 0; right: 0; z-index: 3;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle at top right, rgba(201,168,76,0.07) 0%, transparent 65%);
+    }
+    .hero-bottom-line {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 1px; z-index: 3;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .hero-inner {
+      position: relative; z-index: 10;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center;
+    }
+
+    .hero-content { animation: fadeUp 0.9s ease both; }
+
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 0.7rem;
+      font-family: var(--font-caps); font-size: 0.68rem; font-weight: 400;
+      color: var(--gold); letter-spacing: 0.22em; text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .hero-tag::before { content: ''; width: 30px; height: 1px; background: var(--gold); opacity: 0.6; }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 600; line-height: 1.05;
+      color: var(--white); margin-bottom: 1.4rem;
+    }
+    .hero h1 em { font-style: italic; color: var(--gold); }
+
+    .hero-sub {
+      font-size: 1rem; font-weight: 300;
+      color: rgba(255,255,255,0.62);
+      max-width: 460px; margin-bottom: 2.4rem; line-height: 1.78;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    /* Trust badges */
+    .hero-trust {
+      display: flex; gap: 2rem; margin-top: 3rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(201,168,76,0.15);
+    }
+    .trust-item { display: flex; flex-direction: column; gap: 0.2rem; }
+    .trust-num {
+      font-family: var(--font-display); font-size: 2rem; font-weight: 600;
+      color: var(--gold); line-height: 1;
+    }
+    .trust-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+
+    /* Hero right panel */
+    .hero-panel { animation: fadeUp 0.9s 0.2s ease both; }
+    .hero-panel-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 2px; padding: 2.5rem;
+      backdrop-filter: blur(10px);
+    }
+    .hero-panel-card h3 {
+      font-family: var(--font-caps); font-size: 0.75rem; font-weight: 400;
+      color: var(--gold); letter-spacing: 0.2em; text-transform: uppercase;
+      margin-bottom: 1.5rem; padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+    }
+    .service-list-hero { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+    .service-list-hero li {
+      display: flex; align-items: center; gap: 0.8rem;
+      font-size: 0.9rem; font-weight: 400; color: rgba(255,255,255,0.75);
+      padding: 0.7rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .service-list-hero li:last-child { border-bottom: none; }
+    .service-list-hero li::before { content: '◆'; color: var(--gold); font-size: 0.4rem; flex-shrink: 0; }
+    .hero-panel-cta {
+      margin-top: 1.8rem; padding-top: 1.5rem;
+      border-top: 1px solid rgba(201,168,76,0.15);
+      text-align: center;
+    }
+    .hero-panel-cta p { font-size: 0.78rem; color: rgba(255,255,255,0.4); margin-bottom: 0.8rem; letter-spacing: 0.05em; }
+
+    /* ── STATS ── */
+    .stats-strip {
+      background: var(--white); border-bottom: 1px solid var(--silver);
+      display: grid; grid-template-columns: repeat(4,1fr);
+    }
+    .stat-box {
+      padding: 2rem 1.5rem; text-align: center;
+      border-right: 1px solid var(--silver);
+      position: relative;
+    }
+    .stat-box:last-child { border-right: none; }
+    .stat-box::after {
+      content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 0; height: 2px; background: var(--gold);
+      transition: width 0.3s ease;
+    }
+    .stat-box:hover::after { width: 80%; }
+    .stat-num { font-family: var(--font-display); font-size: 2.4rem; font-weight: 600; color: var(--navy); line-height: 1; margin-bottom: 0.3rem; }
+    .stat-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+
+    /* ── INTRO ── */
+    .intro { padding: 7rem 0; }
+    .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+    .intro-text p { font-size: 0.97rem; line-height: 1.85; color: var(--muted); margin-bottom: 1rem; }
+    .intro-text p strong { color: var(--navy); font-weight: 600; }
+    .credentials { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--silver); border: 1px solid var(--silver); margin-top: 2rem; }
+    .cred-item {
+      background: var(--white); padding: 1.4rem 1.2rem;
+      display: flex; align-items: flex-start; gap: 0.8rem;
+      transition: background 0.2s;
+    }
+    .cred-item:hover { background: var(--off-white); }
+    .cred-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .cred-item h4 { font-family: var(--font-ui); font-weight: 600; font-size: 0.82rem; color: var(--navy); margin-bottom: 0.18rem; }
+    .cred-item p { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+
+    /* ── SERVICES ── */
+    .services-section { padding: 7rem 0; background: var(--navy); position: relative; overflow: hidden; }
+    .services-section::before {
+      content: ''; position: absolute; inset: 0;
+      background: repeating-linear-gradient(-55deg, transparent, transparent 80px, rgba(201,168,76,0.02) 80px, rgba(201,168,76,0.02) 81px);
+    }
+    .services-head { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 3.5rem; position: relative; }
+    .services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(201,168,76,0.12); position: relative; }
+    .svc-card {
+      background: rgba(255,255,255,0.02); padding: 2.4rem 2rem;
+      position: relative; overflow: hidden;
+      text-decoration: none; color: inherit; display: block;
+      transition: background 0.25s;
+    }
+    .svc-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      transform: scaleX(0); transform-origin: left; transition: transform 0.35s ease;
+    }
+    .svc-card:hover { background: rgba(201,168,76,0.05); }
+    .svc-card:hover::before { transform: scaleX(1); }
+    .svc-num { font-family: var(--font-display); font-size: 4rem; font-weight: 600; color: rgba(201,168,76,0.06); line-height: 1; margin-bottom: 1.2rem; display: block; }
+    .svc-card h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.2rem; color: var(--white); margin-bottom: 0.6rem; line-height: 1.2; }
+    .svc-card p { font-size: 0.84rem; line-height: 1.7; color: rgba(255,255,255,0.5); }
+    .svc-arrow { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1.2rem; font-size: 0.72rem; font-weight: 600; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; transition: gap 0.2s; }
+    .svc-card:hover .svc-arrow { gap: 0.8rem; }
+
+    /* ── NEIGHBORHOOD ── */
+    .neighborhood { padding: 7rem 0; }
+    .neighborhood-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+    .area-grid { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--silver); }
+    .area-item {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1rem 1.4rem; border-bottom: 1px solid var(--silver);
+      background: var(--white); font-size: 0.88rem; font-weight: 500; color: var(--navy);
+      transition: background 0.2s, padding-left 0.2s;
+    }
+    .area-item:last-child { border-bottom: none; }
+    .area-item:hover { background: var(--off-white); padding-left: 1.8rem; }
+    .area-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .area-dot.gold { background: var(--gold); }
+    .area-dot.navy { background: var(--navy-light); }
+    .area-item sub { margin-left: auto; font-size: 0.7rem; color: var(--muted); font-weight: 300; }
+
+    .neighborhood-text p { font-size: 0.97rem; line-height: 1.85; color: var(--muted); margin-bottom: 1rem; }
+    .pull-quote {
+      background: var(--navy); color: var(--white);
+      padding: 1.8rem 2rem; margin: 1.8rem 0;
+      border-left: 3px solid var(--gold); position: relative;
+    }
+    .pull-quote p { font-family: var(--font-display); font-style: italic; font-size: 1.05rem; line-height: 1.65; margin-bottom: 0.6rem; }
+    .pull-quote cite { font-size: 0.72rem; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; font-style: normal; }
+
+    /* ── PROCESS ── */
+    .process-section { padding: 7rem 0; background: var(--navy); position: relative; }
+    .process-section::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+    .process-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; margin-top: 3.5rem; border: 1px solid rgba(201,168,76,0.15); }
+    .p-step {
+      padding: 2.5rem 1.8rem; border-right: 1px solid rgba(201,168,76,0.15);
+      position: relative; transition: background 0.2s;
+    }
+    .p-step:last-child { border-right: none; }
+    .p-step:hover { background: rgba(201,168,76,0.04); }
+    .p-num {
+      font-family: var(--font-display); font-size: 3.5rem; font-weight: 600;
+      color: rgba(201,168,76,0.15); line-height: 1; margin-bottom: 1.2rem;
+    }
+    .p-step h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.1rem; color: var(--white); margin-bottom: 0.6rem; }
+    .p-step p { font-size: 0.84rem; line-height: 1.65; color: rgba(255,255,255,0.45); }
+
+    /* ── REVIEWS ── */
+    .reviews-section { padding: 7rem 0; }
+    .reviews-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 3.5rem; }
+    .review-card { padding: 2.2rem; border-top: 2px solid var(--gold); }
+    .r-stars { color: var(--gold); font-size: 0.85rem; margin-bottom: 1rem; letter-spacing: 0.15em; }
+    .review-card blockquote { font-family: var(--font-display); font-style: italic; font-size: 1rem; line-height: 1.75; color: var(--navy); margin-bottom: 1.5rem; }
+    .reviewer { display: flex; align-items: center; gap: 0.8rem; }
+    .r-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--navy); color: var(--gold); font-family: var(--font-caps); font-weight: 400; font-size: 0.78rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; letter-spacing: 0.05em; }
+    .r-name { font-weight: 600; font-size: 0.85rem; color: var(--navy); }
+    .r-loc { font-size: 0.73rem; color: var(--muted); }
+
+    /* ── CTA ── */
+    .cta-band { background: var(--navy); padding: 6rem 3rem; text-align: center; position: relative; overflow: hidden; }
+    .cta-band::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(201,168,76,0.08) 0%, transparent 65%); }
+    .cta-band::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+    .cta-inner { position: relative; max-width: 640px; margin: 0 auto; }
+    .cta-inner h2 { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 600; color: var(--white); line-height: 1.1; margin-bottom: 1rem; }
+    .cta-inner h2 em { font-style: italic; color: var(--gold); }
+    .cta-inner p { font-size: 1rem; font-weight: 300; color: rgba(255,255,255,0.55); margin-bottom: 2.4rem; line-height: 1.75; }
+    .cta-btns { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .hero-panel { display: none; }
+      .stats-strip { grid-template-columns: repeat(2,1fr); }
+      .intro-grid, .neighborhood-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .process-grid { grid-template-columns: 1fr 1fr; }
+      .p-step { border-bottom: 1px solid rgba(201,168,76,0.15); }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .services-head { flex-direction: column; align-items: flex-start; gap: 1.2rem; }
+      .intro, .services-section, .neighborhood, .process-section, .reviews-section { padding: 5rem 0; }
+    }
+    @media (max-width: 600px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr; }
+      .credentials { grid-template-columns: 1fr; }
+      .hero-trust { gap: 1.5rem; }
     }
   </style>
 </head>
 <body>
 
-<!-- ══ NAV ══ -->
+<!-- NAV -->
 <nav class="site-nav" id="siteNav">
-  <a href="index.html" class="nav-logo">Young's&nbsp;<span class="accent">Roofing</span>&nbsp;&amp;&nbsp;Exteriors</a>
-
-  <!-- Desktop links -->
+  <a href="index.html" class="nav-logo">
+    <span>YOUNG'S</span>
+    <span class="nav-logo-divider"></span>
+    <span class="accent">Roofing & Exteriors</span>
+  </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="index.html" class="active">Home</a></li>
     <li><a href="services.html">Services</a></li>
@@ -142,117 +299,109 @@
     <li><a href="contact.html">Contact</a></li>
     <li><a href="tel:+15041234567" class="nav-cta">📞 Call Now</a></li>
   </ul>
-
-  <!-- Hamburger -->
   <button class="nav-hamburger" id="burger" onclick="toggleMenu()" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<!-- Mobile menu overlay -->
-<div id="mobileMenu" style="
-  display:none;
-  position:fixed;
-  top:68px;left:0;right:0;
-  background:#f5f0e6;
-  z-index:9999;
-  flex-direction:column;
-  padding:0.5rem 0 1rem 0;
-  border-top:3px solid #b85c38;
-  border-bottom:2px solid #d4bc96;
-  box-shadow:0 8px 24px rgba(0,0,0,0.15);
-">
-  <a href="index.html" onclick="closeMenu()" style="display:block;padding:1rem 1.5rem;font-size:1.1rem;font-weight:600;color:#3d2b1f;border-bottom:1px solid #e8e0d0;text-decoration:none;">🏠 Home</a>
-  <a href="services.html" onclick="closeMenu()" style="display:block;padding:1rem 1.5rem;font-size:1.1rem;font-weight:600;color:#3d2b1f;border-bottom:1px solid #e8e0d0;text-decoration:none;">🔧 Services</a>
-  <a href="gallery.html" onclick="closeMenu()" style="display:block;padding:1rem 1.5rem;font-size:1.1rem;font-weight:600;color:#3d2b1f;border-bottom:1px solid #e8e0d0;text-decoration:none;">📸 Our Work</a>
-  <a href="contact.html" onclick="closeMenu()" style="display:block;padding:1rem 1.5rem;font-size:1.1rem;font-weight:600;color:#3d2b1f;border-bottom:1px solid #e8e0d0;text-decoration:none;">✉️ Contact</a>
+<!-- MOBILE MENU -->
+<div id="mobileMenu" style="display:none;position:fixed;top:72px;left:0;right:0;background:#0b1c2e;z-index:9999;flex-direction:column;padding:0.5rem 0 1rem;border-top:2px solid #c9a84c;border-bottom:1px solid rgba(201,168,76,0.2);box-shadow:0 8px 32px rgba(0,0,0,0.4);">
+  <a href="index.html" onclick="closeMenu()" style="display:block;padding:1rem 1.5rem;font-size:0.85rem;font-weight:500;color:rgba(255,255,255,0.75);border-bottom:1px solid rgba(255,255,255,0.06);text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;">Home</a>
+  <a href="services.html" onclick="closeMenu()" style="display:block;padding:1rem 1.5rem;font-size:0.85rem;font-weight:500;color:rgba(255,255,255,0.75);border-bottom:1px solid rgba(255,255,255,0.06);text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;">Services</a>
+  <a href="gallery.html" onclick="closeMenu()" style="display:block;padding:1rem 1.5rem;font-size:0.85rem;font-weight:500;color:rgba(255,255,255,0.75);border-bottom:1px solid rgba(255,255,255,0.06);text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;">Our Work</a>
+  <a href="contact.html" onclick="closeMenu()" style="display:block;padding:1rem 1.5rem;font-size:0.85rem;font-weight:500;color:rgba(255,255,255,0.75);border-bottom:1px solid rgba(255,255,255,0.06);text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;">Contact</a>
   <div style="padding:1rem 1.5rem;">
-    <a href="tel:+15041234567" style="display:block;background:#b85c38;color:#fff;text-align:center;padding:1rem;border-radius:4px;font-size:1.1rem;font-weight:700;text-decoration:none;">📞 Call Now — (504) 123-4567</a>
+    <a href="tel:+15041234567" style="display:block;background:#c9a84c;color:#0b1c2e;text-align:center;padding:1rem;font-size:0.85rem;font-weight:700;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">📞 Call Now — (504) 123-4567</a>
   </div>
 </div>
 
 <script>
-function toggleMenu() {
-  var menu = document.getElementById('mobileMenu');
-  var burger = document.getElementById('burger');
-  var isOpen = menu.style.display === 'flex';
-  if (isOpen) {
-    menu.style.display = 'none';
-    burger.classList.remove('is-open');
-  } else {
-    menu.style.display = 'flex';
-    burger.classList.add('is-open');
-  }
-}
-function closeMenu() {
-  document.getElementById('mobileMenu').style.display = 'none';
-  document.getElementById('burger').classList.remove('is-open');
-}
-window.addEventListener('scroll', function() {
-  var nav = document.getElementById('siteNav');
-  nav.classList.toggle('scrolled', window.scrollY > 20);
-});
+function toggleMenu(){var m=document.getElementById('mobileMenu'),b=document.getElementById('burger'),o=m.style.display==='flex';m.style.display=o?'none':'flex';b.classList.toggle('is-open',!o);}
+function closeMenu(){document.getElementById('mobileMenu').style.display='none';document.getElementById('burger').classList.remove('is-open');}
+window.addEventListener('scroll',function(){document.getElementById('siteNav').classList.toggle('scrolled',window.scrollY>20);},{passive:true});
 </script>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-sky"></div>
-  <div class="sun"></div>
-  <div class="cloud c1"></div>
-  <div class="cloud c2"></div>
-  <div class="cloud c3"></div>
-  <svg class="houses" viewBox="0 0 1440 260" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice">
-    <defs><linearGradient id="gFade" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8f0d8" stop-opacity="0"/><stop offset="100%" stop-color="#eceae0" stop-opacity="1"/></linearGradient></defs>
-    <g fill="#c8d8b2" opacity="0.45"><polygon points="90,190 135,138 180,190"/><rect x="100" y="190" width="70" height="70"/><polygon points="240,185 288,130 336,185"/><rect x="250" y="185" width="76" height="75"/><polygon points="600,188 650,132 700,188"/><rect x="610" y="188" width="80" height="72"/><polygon points="920,183 972,125 1024,183"/><rect x="930" y="183" width="84" height="77"/><polygon points="1220,186 1270,130 1320,186"/><rect x="1230" y="186" width="80" height="74"/></g>
-    <g fill="#a8c08a" opacity="0.6"><polygon points="0,205 58,142 116,205"/><rect x="8" y="205" width="100" height="55"/><rect x="36" y="218" width="26" height="42"/><polygon points="330,200 398,133 466,200"/><rect x="340" y="200" width="116" height="60"/><rect x="378" y="213" width="32" height="47"/><rect x="342" y="215" width="24" height="22"/><polygon points="720,200 786,134 852,200"/><rect x="730" y="200" width="112" height="60"/><rect x="766" y="213" width="30" height="47"/><polygon points="1060,196 1126,130 1192,196"/><rect x="1070" y="196" width="112" height="64"/><rect x="1106" y="208" width="28" height="52"/><polygon points="1310,200 1376,132 1440,200"/><rect x="1318" y="200" width="122" height="60"/></g>
-    <g fill="#789660"><polygon points="155,215 238,148 321,215"/><rect x="168" y="215" width="138" height="45"/><rect x="208" y="222" width="42" height="38"/><rect x="170" y="226" width="28" height="20"/><polygon points="490,213 582,144 674,213"/><rect x="503" y="213" width="158" height="47"/><rect x="546" y="220" width="40" height="40"/><rect x="506" y="228" width="28" height="22"/><rect x="538" y="158" width="13" height="30" fill="#688450"/><polygon points="856,210 950,140 1044,210"/><rect x="868" y="210" width="164" height="50"/><rect x="912" y="218" width="42" height="42"/><rect x="870" y="226" width="30" height="20"/><rect x="888" y="153" width="13" height="32" fill="#688450"/><polygon points="1188,214 1280,142 1372,214"/><rect x="1200" y="214" width="160" height="46"/><rect x="1242" y="221" width="40" height="39"/><rect x="1202" y="228" width="28" height="20"/></g>
-    <rect x="0" y="248" width="1440" height="12" fill="#6a8450" opacity="0.35"/>
-    <rect x="0" y="250" width="1440" height="10" fill="url(#gFade)"/>
-  </svg>
-  <div class="hero-content">
-    <div class="hero-badge">Serving Metairie & Greater New Orleans</div>
-    <h1>Your Neighbor.<br>Your <em>Roofer.</em></h1>
-    <p class="hero-sub">Young's Roofing & Exteriors Co. — born and raised right here. We protect the homes that make Metairie feel like home.</p>
-    <div class="hero-btns">
-      <a href="tel:+15041234567" class="btn btn-primary">📞 Call Now</a>
-      <a href="gallery.html" class="btn btn-soft">See Our Work</a>
+  <div class="hero-bg">
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="video.mp4" type="video/mp4"/>
+    </video>
+  </div>
+  <div class="hero-corner"></div>
+  <div class="hero-bottom-line"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-tag">Metairie, Louisiana · Est. Since Day One</div>
+        <h1>Where Craftsmanship<br>Meets <em>Commitment.</em></h1>
+        <p class="hero-sub">Young's Roofing & Exteriors Co. delivers expert roofing, storm damage repair, and exterior solutions — backed by local knowledge, transparent pricing, and a reputation built one roof at a time.</p>
+        <div class="hero-btns">
+          <a href="tel:+15041234567" class="btn btn-primary">📞 Call Now</a>
+          <a href="contact.html" class="btn btn-outline-white">Request an Estimate</a>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-item"><div class="trust-num">20+</div><div class="trust-label">Years Local</div></div>
+          <div class="trust-item"><div class="trust-num">500+</div><div class="trust-label">Roofs Completed</div></div>
+          <div class="trust-item"><div class="trust-num">100%</div><div class="trust-label">Satisfaction</div></div>
+          <div class="trust-item"><div class="trust-num">24/7</div><div class="trust-label">Storm Response</div></div>
+        </div>
+      </div>
+      <div class="hero-panel">
+        <div class="hero-panel-card">
+          <h3>Our Services</h3>
+          <ul class="service-list-hero">
+            <li>Roof Replacement</li>
+            <li>Roof Repair & Leak Detection</li>
+            <li>Storm & Hurricane Damage</li>
+            <li>Insurance Claim Assistance</li>
+            <li>Gutters & Siding</li>
+            <li>Free Roof Inspections</li>
+            <li>Commercial Roofing</li>
+          </ul>
+          <div class="hero-panel-cta">
+            <p>Licensed & Insured · Jefferson Parish</p>
+            <a href="services.html" class="btn btn-outline-gold" style="width:100%;justify-content:center;">View All Services</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- MARQUEE -->
-<div class="marquee-bar"><div class="marquee-track"><span>Roof Replacement</span><span>Storm Damage Repair</span><span>Gutters & Siding</span><span>Insurance Claims</span><span>Free Inspections</span><span>24/7 Emergency Response</span><span>Residential & Commercial</span><span>Metairie's Local Roofers</span><span>Roof Replacement</span><span>Storm Damage Repair</span><span>Gutters & Siding</span><span>Insurance Claims</span><span>Free Inspections</span><span>24/7 Emergency Response</span><span>Residential & Commercial</span><span>Metairie's Local Roofers</span></div></div>
+<div class="marquee-bar"><div class="marquee-track"><span>Roof Replacement</span><span>Storm Damage Repair</span><span>Gutters & Siding</span><span>Insurance Claims</span><span>Free Inspections</span><span>24/7 Emergency Response</span><span>Residential & Commercial</span><span>Jefferson Parish Experts</span><span>Roof Replacement</span><span>Storm Damage Repair</span><span>Gutters & Siding</span><span>Insurance Claims</span><span>Free Inspections</span><span>24/7 Emergency Response</span><span>Residential & Commercial</span><span>Jefferson Parish Experts</span></div></div>
 
 <!-- STATS -->
-<div class="stats-bar">
-  <div class="stat-item"><div class="stat-num">20+</div><div class="stat-label">Years Local</div></div>
-  <div class="stat-item"><div class="stat-num">500+</div><div class="stat-label">Roofs Completed</div></div>
-  <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Satisfaction Rate</div></div>
-  <div class="stat-item"><div class="stat-num">24/7</div><div class="stat-label">Storm Response</div></div>
+<div class="stats-strip">
+  <div class="stat-box"><div class="stat-num">20+</div><div class="stat-label">Years in the Parish</div></div>
+  <div class="stat-box"><div class="stat-num">500+</div><div class="stat-label">Roofs Completed</div></div>
+  <div class="stat-box"><div class="stat-num">100%</div><div class="stat-label">Satisfaction Rate</div></div>
+  <div class="stat-box"><div class="stat-num">24/7</div><div class="stat-label">Storm Response</div></div>
 </div>
-
-<!-- HOOD STRIP -->
-<div class="hood-strip"><span>Metairie</span><span>Kenner</span><span>River Ridge</span><span>Jefferson</span><span>Elmwood</span><span>Harahan</span><span>New Orleans</span></div>
 
 <!-- INTRO -->
 <section class="intro">
   <div class="container">
     <div class="intro-grid">
-      <div class="intro-text anim-up">
-        <div class="eyebrow">About Us</div>
-        <h2 class="section-title">We Know These Streets.<br>We Know These <em>Roofs.</em></h2>
-        <p>We're not a 1-800 company that blows in after a storm and disappears. <strong>Young's Roofing & Exteriors Co.</strong> is local — our crew lives, shops, and raises families right here in Jefferson Parish.</p>
-        <p>That means we know Louisiana weather like the back of our hand. The humidity, the heat, the hurricane season. We build roofs that can take it — because we've lived through it too.</p>
-        <div style="margin-top:1.8rem;display:flex;gap:1rem;flex-wrap:wrap;">
-          <a href="services.html" class="btn btn-primary">Our Services</a>
+      <div class="anim-up">
+        <div class="eyebrow">Who We Are</div>
+        <h2 class="section-title">A Name You Can Trust<br>In <em>Jefferson Parish</em></h2>
+        <div class="gold-divider"></div>
+        <p>We're not a national franchise. Young's Roofing & Exteriors Co. is a <strong>local, owner-operated business</strong> built on the principle that your home deserves the same care and attention we'd give our own.</p>
+        <p>Our crew lives and works in Metairie, Kenner, and River Ridge. We understand Louisiana weather — the humidity, the heat, and the devastating storms — and we build roofs specifically designed to withstand it all.</p>
+        <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;">
+          <a href="services.html" class="btn btn-navy">Our Services</a>
           <a href="contact.html" class="btn btn-ghost">Get an Estimate</a>
         </div>
       </div>
-      <div class="stat-cards anim-up-2">
-        <div class="card stat-card"><div class="stat-card-num">20+</div><div class="stat-card-lbl">Years in the Parish</div></div>
-        <div class="card stat-card"><div class="stat-card-num">500+</div><div class="stat-card-lbl">Roofs Installed</div></div>
-        <div class="card stat-card"><div class="stat-card-num">100%</div><div class="stat-card-lbl">Satisfaction</div></div>
-        <div class="card stat-card"><div class="stat-card-num">24hr</div><div class="stat-card-lbl">Storm Response</div></div>
+      <div class="anim-up-2">
+        <div class="credentials">
+          <div class="cred-item"><span class="cred-icon">🏛️</span><div><h4>Licensed & Insured</h4><p>Full liability coverage and workers' comp on every job.</p></div></div>
+          <div class="cred-item"><span class="cred-icon">📋</span><div><h4>Insurance Experts</h4><p>We handle the claims process from start to finish.</p></div></div>
+          <div class="cred-item"><span class="cred-icon">🔨</span><div><h4>Workmanship Warranty</h4><p>Every installation backed by our labor guarantee.</p></div></div>
+          <div class="cred-item"><span class="cred-icon">📍</span><div><h4>Locally Owned</h4><p>Metairie-based. Your neighbors, not a 1-800 company.</p></div></div>
+        </div>
       </div>
     </div>
   </div>
@@ -263,18 +412,18 @@ window.addEventListener('scroll', function() {
   <div class="container">
     <div class="services-head">
       <div>
-        <div class="eyebrow" style="color:var(--tan);"><span style="display:inline-block;width:24px;height:1px;background:var(--tan);margin-right:0.6rem;vertical-align:middle;"></span>What We Do</div>
-        <h2 class="section-title light">Protecting <em>Every Roof</em><br>in the Parish</h2>
+        <div class="eyebrow" style="color:var(--gold);">What We Do</div>
+        <h2 class="section-title light">Complete Roofing &<br><em>Exterior Solutions</em></h2>
       </div>
-      <a href="services.html" class="btn btn-outline" style="flex-shrink:0;">View All Services</a>
+      <a href="services.html" class="btn btn-outline-gold">View All Services</a>
     </div>
     <div class="services-grid">
-      <a href="services.html#replacement" class="svc-card"><span class="svc-icon">🏠</span><span class="svc-num">01</span><h3>Roof Replacement</h3><p>Full tear-off and installation of shingles, metal, and flat roof systems built for Louisiana's climate.</p><span class="svc-arrow">Learn more →</span></a>
-      <a href="services.html#repair" class="svc-card"><span class="svc-icon">🔧</span><span class="svc-num">02</span><h3>Roof Repair</h3><p>Leaks, missing shingles, flashing — we diagnose and fix fast so your home stays dry.</p><span class="svc-arrow">Learn more →</span></a>
-      <a href="services.html#storm" class="svc-card"><span class="svc-icon">⛈️</span><span class="svc-num">03</span><h3>Storm & Hurricane Damage</h3><p>We're first on the scene after a storm. We work directly with your insurance company.</p><span class="svc-arrow">Learn more →</span></a>
-      <a href="services.html#gutters" class="svc-card"><span class="svc-icon">🏗️</span><span class="svc-num">04</span><h3>Gutters & Siding</h3><p>Complete gutter and exterior siding solutions built for south Louisiana heat and rain.</p><span class="svc-arrow">Learn more →</span></a>
-      <a href="services.html#inspection" class="svc-card"><span class="svc-icon">🔍</span><span class="svc-num">05</span><h3>Free Inspections</h3><p>Thorough, honest roof assessments at zero cost. No pressure, no upsell — ever.</p><span class="svc-arrow">Learn more →</span></a>
-      <a href="services.html#commercial" class="svc-card"><span class="svc-icon">🏢</span><span class="svc-num">06</span><h3>Commercial Roofing</h3><p>TPO, EPDM, metal systems for commercial buildings. Same local accountability.</p><span class="svc-arrow">Learn more →</span></a>
+      <a href="services.html#replacement" class="svc-card"><span class="svc-num">01</span><h3>Roof Replacement</h3><p>Full tear-off and installation of shingles, metal, and flat roof systems engineered for Louisiana's climate.</p><span class="svc-arrow">Learn More →</span></a>
+      <a href="services.html#repair" class="svc-card"><span class="svc-num">02</span><h3>Roof Repair</h3><p>Leaks, missing shingles, damaged flashing — we diagnose precisely and fix only what needs fixing.</p><span class="svc-arrow">Learn More →</span></a>
+      <a href="services.html#storm" class="svc-card"><span class="svc-num">03</span><h3>Storm Damage</h3><p>24/7 emergency response. We work directly with your insurance adjuster to maximize your claim.</p><span class="svc-arrow">Learn More →</span></a>
+      <a href="services.html#gutters" class="svc-card"><span class="svc-num">04</span><h3>Gutters & Siding</h3><p>Seamless gutters and exterior siding built to handle south Louisiana's rainfall and UV intensity.</p><span class="svc-arrow">Learn More →</span></a>
+      <a href="services.html#inspection" class="svc-card"><span class="svc-num">05</span><h3>Free Inspections</h3><p>Thorough roof assessments at no charge. Honest findings, no pressure, no upsell — ever.</p><span class="svc-arrow">Learn More →</span></a>
+      <a href="services.html#commercial" class="svc-card"><span class="svc-num">06</span><h3>Commercial Roofing</h3><p>TPO, EPDM, and metal systems for commercial properties. Minimal disruption, maximum quality.</p><span class="svc-arrow">Learn More →</span></a>
     </div>
   </div>
 </section>
@@ -283,28 +432,30 @@ window.addEventListener('scroll', function() {
 <section class="neighborhood" id="neighborhood">
   <div class="container">
     <div class="neighborhood-grid">
-      <div class="map-card anim-up">
-        <div class="map-heading">🗺️ Areas We Proudly Serve</div>
-        <div class="map-areas">
-          <div class="map-area"><span class="dot dot-brick"></span>Metairie<sub>Our Home Base</sub></div>
-          <div class="map-area"><span class="dot dot-brick"></span>Kenner<sub>Just down the road</sub></div>
-          <div class="map-area"><span class="dot dot-moss"></span>River Ridge<sub>Neighbor to neighbor</sub></div>
-          <div class="map-area"><span class="dot dot-moss"></span>Harahan<sub>Family community</sub></div>
-          <div class="map-area"><span class="dot dot-sky"></span>Jefferson<sub>Serving the parish</sub></div>
-          <div class="map-area"><span class="dot dot-sky"></span>Elmwood<sub>Commercial & residential</sub></div>
-          <div class="map-area"><span class="dot dot-brick"></span>Greater New Orleans<sub>And surrounding areas</sub></div>
+      <div class="anim-up">
+        <div class="eyebrow">Service Area</div>
+        <h2 class="section-title">Serving All of<br><em>Jefferson Parish</em></h2>
+        <div class="gold-divider"></div>
+        <div class="area-grid">
+          <div class="area-item"><span class="area-dot gold"></span>Metairie<sub>Our Home Base</sub></div>
+          <div class="area-item"><span class="area-dot gold"></span>Kenner<sub>Just down the road</sub></div>
+          <div class="area-item"><span class="area-dot navy"></span>River Ridge<sub>Neighbor to neighbor</sub></div>
+          <div class="area-item"><span class="area-dot navy"></span>Harahan<sub>Family community</sub></div>
+          <div class="area-item"><span class="area-dot gold"></span>Jefferson<sub>Serving the parish</sub></div>
+          <div class="area-item"><span class="area-dot navy"></span>Elmwood<sub>Commercial & residential</sub></div>
+          <div class="area-item"><span class="area-dot gold"></span>Greater New Orleans<sub>And surrounding areas</sub></div>
         </div>
       </div>
-      <div class="neighborhood-text anim-up-2">
-        <div class="eyebrow">Rooted Here</div>
-        <h2 class="section-title">This Isn't Just<br><em>a Job to Us</em></h2>
-        <p>When we fix a roof on Transcontinental Drive or replace gutters off Causeway, we're not just doing a job — we're taking care of our community. These are our neighbors, our kids' schools, our parishes.</p>
+      <div class="anim-up-2">
+        <div class="eyebrow">Our Commitment</div>
+        <h2 class="section-title">More Than a<br><em>Contractor</em></h2>
+        <div class="gold-divider"></div>
+        <p>When we fix a roof on Transcontinental Drive or replace gutters off Causeway Boulevard, we're not simply completing a job — we're investing in the neighborhood where we live and raise our families.</p>
         <div class="pull-quote">
-          <p>"After Ida tore through, I didn't know who to call. Young's showed up the next morning, tarped my roof same day, and had it replaced within two weeks. They felt like family."</p>
+          <p>"After Ida tore through, Young's showed up the next morning, tarped my roof same day, and had it fully replaced within two weeks. They felt like family."</p>
           <cite>— Sandra M., Metairie, LA</cite>
         </div>
-        <p>That's the reputation we've built — one neighbor at a time.</p>
-        <a href="contact.html" class="btn btn-primary" style="margin-top:1.5rem;">Get Your Free Estimate</a>
+        <a href="contact.html" class="btn btn-navy" style="margin-top:0.5rem;">Schedule a Free Inspection</a>
       </div>
     </div>
   </div>
@@ -314,14 +465,14 @@ window.addEventListener('scroll', function() {
 <section class="process-section">
   <div class="container">
     <div class="text-center">
-      <div class="eyebrow" style="justify-content:center;">Simple & Honest</div>
-      <h2 class="section-title">How It <em>Works</em></h2>
+      <div class="eyebrow" style="justify-content:center;">Our Process</div>
+      <h2 class="section-title light" style="margin-bottom:0.5rem;">Simple. Transparent. <em>Done Right.</em></h2>
     </div>
     <div class="process-grid">
-      <div class="p-step anim-up-1"><div class="p-dot">1</div><h3>Free Inspection</h3><p>We come to you, walk the roof, and give you an honest picture — no charge, no obligation whatsoever.</p></div>
-      <div class="p-step anim-up-2"><div class="p-dot">2</div><h3>Clear Estimate</h3><p>You get a plain-English quote with no confusing line items and no bait-and-switch. Just what it costs and why.</p></div>
-      <div class="p-step anim-up-3"><div class="p-dot">3</div><h3>We Get to Work</h3><p>Our local crew shows up on time, works clean, and treats your home the way we'd want ours treated.</p></div>
-      <div class="p-step anim-up-4"><div class="p-dot">4</div><h3>You're Covered</h3><p>Final walkthrough, full cleanup, and your warranty paperwork handed right to you. Job done right.</p></div>
+      <div class="p-step anim-up-1"><div class="p-num">01</div><h3>Free Inspection</h3><p>We come to you, assess every inch of your roof, and give you an honest report — no charge, no obligation.</p></div>
+      <div class="p-step anim-up-2"><div class="p-num">02</div><h3>Clear Estimate</h3><p>A detailed, plain-English quote with no hidden fees. You know exactly what you're getting before we start.</p></div>
+      <div class="p-step anim-up-3"><div class="p-num">03</div><h3>Expert Installation</h3><p>Our licensed crew arrives on schedule, works with precision, and respects your property throughout.</p></div>
+      <div class="p-step anim-up-4"><div class="p-num">04</div><h3>Guaranteed Results</h3><p>Final walkthrough, complete cleanup, and your warranty documentation delivered personally.</p></div>
     </div>
   </div>
 </section>
@@ -330,26 +481,30 @@ window.addEventListener('scroll', function() {
 <section class="reviews-section" id="reviews">
   <div class="container">
     <div class="text-center">
-      <div class="eyebrow" style="justify-content:center;">From the Neighborhood</div>
-      <h2 class="section-title">What Folks <em>Are Saying</em></h2>
+      <div class="eyebrow" style="justify-content:center;">Testimonials</div>
+      <h2 class="section-title" style="margin-bottom:0.5rem;">What Our Clients <em>Say</em></h2>
+      <div class="gold-divider center"></div>
     </div>
     <div class="reviews-grid">
-      <div class="card review-card anim-up-1"><div class="r-stars">★★★★★</div><blockquote>"Young's replaced our entire roof after Ida. They handled our insurance claim and kept us in the loop the whole time. The smoothest contractor experience we've ever had."</blockquote><div class="reviewer"><div class="r-avatar">MR</div><div><div class="r-name">Mike R.</div><div class="r-loc">Metairie, LA</div></div></div></div>
-      <div class="card review-card anim-up-2"><div class="r-stars">★★★★★</div><blockquote>"I've used two other roofing companies before and neither came close. You can tell they actually care about doing good work in their own community."</blockquote><div class="reviewer"><div class="r-avatar">TL</div><div><div class="r-name">Tammy L.</div><div class="r-loc">River Ridge, LA</div></div></div></div>
-      <div class="card review-card anim-up-3"><div class="r-stars">★★★★★</div><blockquote>"Called Tuesday morning with an active leak. They were here by noon with a tarp and had an estimate to me that evening. That kind of response doesn't happen with big companies."</blockquote><div class="reviewer"><div class="r-avatar">DB</div><div><div class="r-name">David B.</div><div class="r-loc">Kenner, LA</div></div></div></div>
+      <div class="card review-card anim-up-1"><div class="r-stars">★★★★★</div><blockquote>"Young's replaced our entire roof after Ida. They handled our insurance claim and kept us informed every step of the way. The most professional contractor experience I've ever had."</blockquote><div class="reviewer"><div class="r-avatar">MR</div><div><div class="r-name">Mike R.</div><div class="r-loc">Metairie, LA</div></div></div></div>
+      <div class="card review-card anim-up-2"><div class="r-stars">★★★★★</div><blockquote>"I've used two other roofing companies before Young's. Neither came close to their level of communication and quality. You can tell they genuinely care about doing excellent work."</blockquote><div class="reviewer"><div class="r-avatar">TL</div><div><div class="r-name">Tammy L.</div><div class="r-loc">River Ridge, LA</div></div></div></div>
+      <div class="card review-card anim-up-3"><div class="r-stars">★★★★★</div><blockquote>"Called Tuesday morning with an active leak. They were at my house by noon with a tarp and had a full estimate to me that evening. Unmatched response time and professionalism."</blockquote><div class="reviewer"><div class="r-avatar">DB</div><div><div class="r-name">David B.</div><div class="r-loc">Kenner, LA</div></div></div></div>
     </div>
-    <div class="reviews-more"><a href="gallery.html" class="btn btn-ghost">See Our Work in the Gallery →</a></div>
+    <div style="text-align:center;margin-top:2.5rem;">
+      <a href="gallery.html" class="btn btn-ghost">View Our Work →</a>
+    </div>
   </div>
 </section>
 
 <!-- CTA -->
 <div class="cta-band">
   <div class="cta-inner">
-    <h2>Ready to Protect<br><em>Your Home?</em></h2>
-    <p>Free estimates, honest answers, no pressure. We're your neighbors — give us a call.</p>
+    <div class="eyebrow" style="justify-content:center;margin-bottom:1rem;">Get Started Today</div>
+    <h2>Ready for a Roof<br>You Can <em>Rely On?</em></h2>
+    <p>Free inspections, transparent estimates, and work backed by our satisfaction guarantee. Call us or request an estimate online.</p>
     <div class="cta-btns">
-      <a href="tel:+15041234567" class="btn btn-white">📞 (504) 123-4567</a>
-      <a href="contact.html" class="btn btn-outline">Request a Free Estimate</a>
+      <a href="tel:+15041234567" class="btn btn-primary">📞 (504) 123-4567</a>
+      <a href="contact.html" class="btn btn-outline-white">Request a Free Estimate</a>
     </div>
   </div>
 </div>
@@ -359,16 +514,16 @@ window.addEventListener('scroll', function() {
   <div class="container">
     <div class="footer-top">
       <div class="footer-brand">
-        <a href="index.html" class="nav-logo" style="color:var(--cream);margin-bottom:0.5rem;">Young's&nbsp;<span class="accent" style="color:#c87c5a;">Roofing</span>&nbsp;&amp;&nbsp;Exteriors</a>
-        <p class="footer-tagline">Born and raised in Metairie. Protecting Jefferson Parish homes since day one.</p>
+        <a href="index.html" class="nav-logo" style="color:var(--white);margin-bottom:0.8rem;">YOUNG'S <span class="accent" style="color:var(--gold);">Roofing & Exteriors</span></a>
+        <p class="footer-tagline">Expert roofing and exterior solutions for Metairie and Jefferson Parish. Local, licensed, and committed to excellence.</p>
         <a href="tel:+15041234567" class="footer-phone">📞 (504) 123-4567</a>
       </div>
-      <div class="footer-col"><h4>Services</h4><ul><li><a href="services.html#replacement">Roof Replacement</a></li><li><a href="services.html#repair">Roof Repair</a></li><li><a href="services.html#storm">Storm Damage</a></li><li><a href="services.html#gutters">Gutters &amp; Siding</a></li><li><a href="services.html#inspection">Free Inspections</a></li><li><a href="services.html#commercial">Commercial</a></li></ul></div>
-      <div class="footer-col"><h4>Company</h4><ul><li><a href="index.html">Home</a></li><li><a href="gallery.html">Our Work</a></li><li><a href="#reviews">Reviews</a></li><li><a href="contact.html">Contact Us</a></li></ul></div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="services.html#replacement">Roof Replacement</a></li><li><a href="services.html#repair">Roof Repair</a></li><li><a href="services.html#storm">Storm Damage</a></li><li><a href="services.html#gutters">Gutters & Siding</a></li><li><a href="services.html#inspection">Free Inspections</a></li><li><a href="services.html#commercial">Commercial</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="index.html">Home</a></li><li><a href="gallery.html">Our Work</a></li><li><a href="#reviews">Testimonials</a></li><li><a href="contact.html">Contact</a></li></ul></div>
       <div class="footer-col"><h4>Service Areas</h4><ul><li><a href="contact.html">Metairie, LA</a></li><li><a href="contact.html">Kenner, LA</a></li><li><a href="contact.html">River Ridge, LA</a></li><li><a href="contact.html">Harahan, LA</a></li><li><a href="contact.html">Jefferson, LA</a></li><li><a href="contact.html">Greater New Orleans</a></li></ul></div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-copy">© 2026 Young's Roofing &amp; Exteriors Co. · All rights reserved.</p>
+      <p class="footer-copy">© 2026 Young's Roofing & Exteriors Co. · All rights reserved.</p>
       <div class="footer-badges"><span class="footer-badge">Licensed</span><span class="footer-badge">Insured</span><span class="footer-badge">Jefferson Parish</span></div>
     </div>
   </div>
