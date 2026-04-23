@@ -4,153 +4,105 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact — Young's Roofing & Exteriors Co.</title>
+  <link rel="icon" type="image/svg+xml" href="logo-icon.svg"/>
   <link rel="stylesheet" href="style.css"/>
   <style>
-    /* ── LAYOUT ── */
-    .contact-body { padding: 5rem 0; }
-    .contact-grid {
-      display: grid; grid-template-columns: 1.1fr 1fr;
-      gap: 5rem; align-items: start;
-    }
+    .contact-body { padding: 6rem 0; }
+    .contact-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 6rem; align-items: start; }
 
-    /* ── FORM ── */
-    .form-block h2 {
-      font-family: var(--font-display); font-size: 1.9rem; font-weight: 900;
-      color: var(--brown); margin-bottom: 0.4rem;
-    }
-    .form-block > .subtitle {
-      font-family: var(--font-body); font-style: italic;
-      color: var(--muted); font-size: 0.95rem; margin-bottom: 2rem; line-height: 1.65;
-    }
+    .form-block h2 { font-family: var(--font-display); font-size: 2rem; font-weight: 600; color: var(--navy); margin-bottom: 0.4rem; }
+    .form-block > .subtitle { font-size: 0.9rem; font-weight: 300; color: var(--muted); margin-bottom: 2rem; line-height: 1.65; }
 
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .field { display: flex; flex-direction: column; gap: 0.38rem; margin-bottom: 1rem; }
-    .field label {
-      font-size: 0.76rem; font-weight: 600;
-      letter-spacing: 0.08em; text-transform: uppercase; color: var(--brown);
-    }
+    .field { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+    .field label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy); }
     .field input, .field select, .field textarea {
-      background: var(--white); border: 1.5px solid var(--parchment);
-      border-radius: var(--radius);
-      padding: 0.72rem 1rem;
+      background: var(--white); border: 1px solid var(--silver);
+      border-radius: var(--radius); padding: 0.8rem 1rem;
       font-family: var(--font-ui); font-size: 0.9rem; color: var(--text);
-      transition: border-color 0.2s, box-shadow 0.2s; outline: none;
-      appearance: none;
+      transition: border-color 0.2s, box-shadow 0.2s; outline: none; appearance: none;
     }
-    .field input:focus, .field select:focus, .field textarea:focus {
-      border-color: var(--brick);
-      box-shadow: 0 0 0 3px rgba(184,92,56,0.1);
-    }
-    .field textarea { resize: vertical; min-height: 118px; }
-    .field select {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a6352' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
-      background-repeat: no-repeat; background-position: right 1rem center;
-      padding-right: 2.5rem;
-    }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgba(11,28,46,0.07); }
+    .field textarea { resize: vertical; min-height: 120px; }
+    .field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235a6a7a' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; }
 
-    /* upload zone */
-    .upload-zone {
-      border: 2px dashed var(--tan); border-radius: var(--radius);
-      padding: 1.8rem; text-align: center; cursor: pointer;
-      background: rgba(212,188,150,0.07);
-      transition: border-color 0.2s, background 0.2s;
-      display: block;
-    }
-    .upload-zone:hover { border-color: var(--brick); background: rgba(184,92,56,0.04); }
+    .upload-zone { border: 1.5px dashed var(--silver); border-radius: var(--radius); padding: 2rem; text-align: center; cursor: pointer; background: var(--off-white); transition: border-color 0.2s, background 0.2s; display: block; }
+    .upload-zone:hover { border-color: var(--navy); background: var(--white); }
     .upload-zone input { display: none; }
-    .upload-icon { font-size: 1.8rem; margin-bottom: 0.45rem; display: block; }
+    .upload-icon { font-size: 1.8rem; margin-bottom: 0.5rem; display: block; }
     .upload-zone p { font-size: 0.83rem; color: var(--muted); line-height: 1.55; }
-    .upload-zone p strong { color: var(--brick); }
+    .upload-zone p strong { color: var(--navy); }
 
-    /* submit */
-    .btn-submit {
-      width: 100%; background: var(--brick); color: var(--white);
-      padding: 1rem; border: none; border-radius: var(--radius);
-      font-family: var(--font-display); font-weight: 700; font-size: 1rem;
-      letter-spacing: 0.03em; cursor: pointer; margin-top: 1.1rem;
-      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-      box-shadow: 0 4px 18px rgba(184,92,56,0.24);
-    }
-    .btn-submit:hover { background: var(--brick-dark); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(184,92,56,0.34); }
-    .form-note {
-      font-size: 0.76rem; color: var(--muted); text-align: center;
-      margin-top: 0.7rem; font-family: var(--font-body); font-style: italic;
-    }
-    .success-msg {
-      display: none; background: #eaf5ea; border: 1px solid #a8d4a8;
-      border-radius: var(--radius); padding: 1.4rem; text-align: center; margin-top: 1rem;
-    }
+    .btn-submit { width: 100%; background: var(--navy); color: var(--white); padding: 1rem; border: none; border-radius: var(--radius); font-family: var(--font-caps); font-weight: 400; font-size: 0.82rem; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; margin-top: 1.1rem; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; }
+    .btn-submit:hover { background: var(--navy-light); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+    .form-note { font-size: 0.76rem; color: var(--muted); text-align: center; margin-top: 0.7rem; }
+    .success-msg { display: none; background: #f0f8f0; border: 1px solid #a8d4a8; border-radius: var(--radius); padding: 1.4rem; text-align: center; margin-top: 1rem; }
     .success-msg.show { display: block; }
-    .success-msg p { color: var(--moss); font-family: var(--font-body); font-style: italic; font-size: 0.93rem; }
+    .success-msg p { color: #2a6a2a; font-size: 0.93rem; }
 
-    /* ── INFO COLUMN ── */
-    .info-block h2 {
-      font-family: var(--font-display); font-size: 1.9rem; font-weight: 900;
-      color: var(--brown); margin-bottom: 0.4rem;
-    }
-    .info-block > .subtitle {
-      font-family: var(--font-body); font-style: italic;
-      color: var(--muted); font-size: 0.95rem; margin-bottom: 2rem; line-height: 1.65;
-    }
+    .info-block h2 { font-family: var(--font-display); font-size: 2rem; font-weight: 600; color: var(--navy); margin-bottom: 0.4rem; }
+    .info-block > .subtitle { font-size: 0.9rem; font-weight: 300; color: var(--muted); margin-bottom: 2rem; line-height: 1.65; }
 
-    .info-card {
-      display: flex; align-items: flex-start; gap: 1rem;
-      padding: 1.4rem; margin-bottom: 0.9rem;
-    }
-    .info-icon {
-      width: 42px; height: 42px; flex-shrink: 0;
-      background: var(--brick-faint);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
-    }
-    .info-card h3 {
-      font-family: var(--font-display); font-weight: 700;
-      font-size: 0.92rem; color: var(--brown); margin-bottom: 0.2rem;
-    }
-    .info-card p, .info-card a {
-      font-size: 0.88rem; color: var(--muted); line-height: 1.55; text-decoration: none;
-    }
-    .info-card a { color: var(--brick); font-weight: 500; transition: color 0.2s; }
-    .info-card a:hover { color: var(--brick-dark); }
+    .info-card { display: flex; align-items: flex-start; gap: 1rem; padding: 1.4rem; margin-bottom: 0.8rem; border-top: 1px solid transparent; }
+    .info-card:hover { border-top-color: var(--gold); }
+    .info-icon { width: 42px; height: 42px; flex-shrink: 0; background: var(--navy); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; font-size: 1rem; }
+    .info-card h3 { font-family: var(--font-caps); font-weight: 400; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--navy); margin-bottom: 0.3rem; }
+    .info-card p, .info-card a { font-size: 0.88rem; color: var(--muted); line-height: 1.55; text-decoration: none; }
+    .info-card a { color: var(--navy); font-weight: 500; transition: color 0.2s; }
+    .info-card a:hover { color: var(--gold); }
 
     .hours-table { width: 100%; font-size: 0.84rem; border-collapse: collapse; margin-top: 0.4rem; }
-    .hours-table td { padding: 0.28rem 0; color: var(--muted); }
-    .hours-table tr td:last-child { text-align: right; color: var(--brown); font-weight: 500; }
-    .hours-table tr.emerg td { color: var(--brick); font-weight: 600; }
+    .hours-table td { padding: 0.3rem 0; color: var(--muted); }
+    .hours-table tr td:last-child { text-align: right; color: var(--navy); font-weight: 500; }
+    .hours-table tr.emerg td { color: var(--gold); font-weight: 600; }
 
-    .emergency-card {
-      background: var(--brick); color: var(--white);
-      border-radius: var(--radius); padding: 1.2rem 1.4rem;
-      display: flex; align-items: flex-start; gap: 1rem; margin-top: 1rem;
-    }
+    .emergency-card { background: var(--navy); color: var(--white); border-radius: var(--radius); padding: 1.4rem 1.6rem; display: flex; align-items: flex-start; gap: 1rem; margin-top: 1rem; border-left: 3px solid var(--gold); }
     .emergency-card .em-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 0.1rem; }
-    .emergency-card h4 { font-family: var(--font-display); font-weight: 700; font-size: 0.93rem; margin-bottom: 0.18rem; }
-    .emergency-card p { font-size: 0.8rem; opacity: 0.85; line-height: 1.5; }
+    .emergency-card h4 { font-family: var(--font-caps); font-weight: 400; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.3rem; }
+    .emergency-card p { font-size: 0.82rem; color: rgba(255,255,255,0.65); line-height: 1.55; }
 
     @media (max-width: 960px) {
-      .contact-grid { grid-template-columns: 1fr; gap: 3.5rem; }
+      .contact-grid { grid-template-columns: 1fr; gap: 4rem; }
       .form-row { grid-template-columns: 1fr; }
-      .contact-body { padding: 3.5rem 0; }
+      .contact-body { padding: 4rem 0; }
     }
   </style>
 </head>
-<body data-page="contact">
-<script src="shared.js"></script>
+<body>
+
+<nav class="site-nav" id="siteNav">
+  <a href="index.html" class="nav-logo"><span>YOUNG'S</span><span class="nav-logo-divider"></span><span class="accent">Roofing & Exteriors</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="gallery.html">Our Work</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+    <li><a href="tel:+15041234567" class="nav-cta">📞 Call Now</a></li>
+  </ul>
+  <button class="nav-hamburger" id="burger" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div id="mobileMenu" style="display:none;position:fixed;top:72px;left:0;right:0;background:#0b1c2e;z-index:9999;flex-direction:column;padding:0.5rem 0 1rem;border-top:2px solid #c9a84c;border-bottom:1px solid rgba(201,168,76,0.2);box-shadow:0 8px 32px rgba(0,0,0,0.4);">
+  <a href="index.html" onclick="closeMenu()" style="display:block;padding:1rem 1.5rem;font-size:0.85rem;font-weight:500;color:rgba(255,255,255,0.75);border-bottom:1px solid rgba(255,255,255,0.06);text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;">Home</a>
+  <a href="services.html" onclick="closeMenu()" style="display:block;padding:1rem 1.5rem;font-size:0.85rem;font-weight:500;color:rgba(255,255,255,0.75);border-bottom:1px solid rgba(255,255,255,0.06);text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;">Services</a>
+  <a href="gallery.html" onclick="closeMenu()" style="display:block;padding:1rem 1.5rem;font-size:0.85rem;font-weight:500;color:rgba(255,255,255,0.75);border-bottom:1px solid rgba(255,255,255,0.06);text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;">Our Work</a>
+  <a href="contact.html" onclick="closeMenu()" style="display:block;padding:1rem 1.5rem;font-size:0.85rem;font-weight:500;color:var(--gold);border-bottom:1px solid rgba(255,255,255,0.06);text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;">Contact</a>
+  <div style="padding:1rem 1.5rem;"><a href="tel:+15041234567" style="display:block;background:#c9a84c;color:#0b1c2e;text-align:center;padding:1rem;font-size:0.85rem;font-weight:700;text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;">📞 Call Now — (504) 123-4567</a></div>
+</div>
+<script>function toggleMenu(){var m=document.getElementById('mobileMenu'),b=document.getElementById('burger'),o=m.style.display==='flex';m.style.display=o?'none':'flex';b.classList.toggle('is-open',!o);}function closeMenu(){document.getElementById('mobileMenu').style.display='none';document.getElementById('burger').classList.remove('is-open');}window.addEventListener('scroll',function(){document.getElementById('siteNav').classList.toggle('scrolled',window.scrollY>20);},{passive:true});</script>
 
 <div class="page-header">
-  <div class="page-eyebrow">We'd Love to Hear From You</div>
-  <h1>Let's Talk About<br><em>Your Roof</em></h1>
-  <p>Whether it's a quick question or a full replacement — we're your neighbors and we're here to help.</p>
+  <div class="page-eyebrow">Get in Touch</div>
+  <h1>Request a Free<br><em>Estimate</em></h1>
+  <p>Call us directly or submit a request below — we respond same day, every day.</p>
 </div>
 
 <section class="contact-body">
   <div class="container">
     <div class="contact-grid">
-
-      <!-- FORM -->
       <div class="form-block anim-up">
-        <h2>Request a Free Estimate</h2>
-        <p class="subtitle">Fill this out and we'll get back to you same day — usually within a couple hours.</p>
+        <h2>Submit a Request</h2>
+        <p class="subtitle">Fill out the form and we'll reach out within a few hours with a free, no-obligation estimate.</p>
 
         <div class="form-row">
           <div class="field"><label>First Name</label><input type="text" placeholder="John"/></div>
@@ -160,7 +112,7 @@
           <div class="field"><label>Phone Number</label><input type="tel" placeholder="(504) 555-0000"/></div>
           <div class="field"><label>Email Address</label><input type="email" placeholder="john@email.com"/></div>
         </div>
-        <div class="field"><label>Street Address</label><input type="text" placeholder="123 Transcontinental Dr, Metairie, LA 70001"/></div>
+        <div class="field"><label>Property Address</label><input type="text" placeholder="123 Transcontinental Dr, Metairie, LA 70001"/></div>
         <div class="form-row">
           <div class="field">
             <label>Service Needed</label>
@@ -177,7 +129,7 @@
             </select>
           </div>
           <div class="field">
-            <label>How Soon?</label>
+            <label>Urgency</label>
             <select>
               <option value="">Select timing…</option>
               <option>Emergency — ASAP</option>
@@ -187,38 +139,37 @@
             </select>
           </div>
         </div>
-        <div class="field"><label>Tell Us More (Optional)</label><textarea placeholder="Describe what's going on — any details help us come prepared…"></textarea></div>
+        <div class="field"><label>Additional Details (Optional)</label><textarea placeholder="Describe the issue or project — any details help us prepare for your visit…"></textarea></div>
         <div class="field">
           <label>Upload a Photo (Optional)</label>
           <label class="upload-zone" for="photo-upload" id="uploadZone">
             <span class="upload-icon">📸</span>
-            <p><strong>Click to upload</strong> or drag & drop<br/>Photos of your roof or damage help us give a faster, more accurate estimate.</p>
+            <p><strong>Click to upload</strong> or drag & drop<br/>Photos help us provide a faster, more accurate estimate.</p>
             <input type="file" id="photo-upload" accept="image/*" multiple/>
           </label>
         </div>
-        <button class="btn-submit" id="submitBtn" onclick="handleSubmit(event)">Send My Request →</button>
-        <p class="form-note">No spam, ever. We'll only contact you about your roofing request.</p>
+        <button class="btn-submit" id="submitBtn" onclick="handleSubmit(event)">Submit Request</button>
+        <p class="form-note">Your information is never shared or sold. We'll only contact you regarding your request.</p>
         <div class="success-msg" id="successMsg">
-          <p>✅ Got it! We'll be in touch within a few hours. In the meantime, feel free to call us at (504) 123-4567.</p>
+          <p>✅ Request received. We'll be in touch within a few hours. You can also reach us directly at (504) 123-4567.</p>
         </div>
       </div>
 
-      <!-- INFO -->
       <div class="info-block anim-up-2">
-        <h2>Other Ways to Reach Us</h2>
-        <p class="subtitle">We're real people — call, text, or email anytime. We actually answer.</p>
+        <h2>Contact Information</h2>
+        <p class="subtitle">Prefer to call? We answer. Every time.</p>
 
         <div class="card info-card">
           <div class="info-icon">📞</div>
-          <div><h3>Call or Text</h3><a href="tel:+15041234567">(504) 123-4567</a><p>The fastest way to reach us.</p></div>
+          <div><h3>Phone</h3><a href="tel:+15041234567">(504) 123-4567</a><p>Call or text — fastest response.</p></div>
         </div>
         <div class="card info-card">
           <div class="info-icon">✉️</div>
-          <div><h3>Email Us</h3><a href="mailto:info@youngsroofing.com">info@youngsroofing.com</a><p>We respond same day, Monday–Saturday.</p></div>
+          <div><h3>Email</h3><a href="mailto:info@youngsroofing.com">info@youngsroofing.com</a><p>Responded same day, Monday–Saturday.</p></div>
         </div>
         <div class="card info-card">
           <div class="info-icon">📍</div>
-          <div><h3>Based In</h3><p>Metairie, Louisiana<br/>Serving all of Jefferson Parish & Greater New Orleans</p></div>
+          <div><h3>Location</h3><p>Metairie, Louisiana<br/>Serving Jefferson Parish & Greater New Orleans</p></div>
         </div>
         <div class="card info-card">
           <div class="info-icon">🕐</div>
@@ -227,8 +178,8 @@
             <table class="hours-table">
               <tr><td>Monday – Friday</td><td>7:00 AM – 6:00 PM</td></tr>
               <tr><td>Saturday</td><td>8:00 AM – 4:00 PM</td></tr>
-              <tr><td>Sunday</td><td>By appointment</td></tr>
-              <tr class="emerg"><td>Storm emergencies</td><td>24 / 7</td></tr>
+              <tr><td>Sunday</td><td>By Appointment</td></tr>
+              <tr class="emerg"><td>Storm Emergencies</td><td>24 / 7</td></tr>
             </table>
           </div>
         </div>
@@ -236,42 +187,38 @@
         <div class="emergency-card">
           <span class="em-icon">⛈️</span>
           <div>
-            <h4>Storm Damage Emergency?</h4>
-            <p>We offer 24/7 emergency tarping and response after severe weather. Call us any time — we'll be there.</p>
+            <h4>Storm Emergency</h4>
+            <p>Active storm damage? We provide 24/7 emergency tarping and response across Jefferson Parish. Call us any time.</p>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo" style="color:var(--white);margin-bottom:0.8rem;">YOUNG'S <span class="accent" style="color:var(--gold);">Roofing & Exteriors</span></a>
+        <p class="footer-tagline">Expert roofing and exterior solutions for Metairie and Jefferson Parish.</p>
+        <a href="tel:+15041234567" class="footer-phone">📞 (504) 123-4567</a>
+      </div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="services.html#replacement">Roof Replacement</a></li><li><a href="services.html#repair">Roof Repair</a></li><li><a href="services.html#storm">Storm Damage</a></li><li><a href="services.html#gutters">Gutters & Siding</a></li><li><a href="services.html#inspection">Free Inspections</a></li><li><a href="services.html#commercial">Commercial</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="index.html">Home</a></li><li><a href="gallery.html">Our Work</a></li><li><a href="index.html#reviews">Testimonials</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Service Areas</h4><ul><li><a href="contact.html">Metairie, LA</a></li><li><a href="contact.html">Kenner, LA</a></li><li><a href="contact.html">River Ridge, LA</a></li><li><a href="contact.html">Harahan, LA</a></li><li><a href="contact.html">Jefferson, LA</a></li><li><a href="contact.html">Greater New Orleans</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 Young's Roofing & Exteriors Co. · All rights reserved.</p>
+      <div class="footer-badges"><span class="footer-badge">Licensed</span><span class="footer-badge">Insured</span><span class="footer-badge">Jefferson Parish</span></div>
+    </div>
+  </div>
+</footer>
+
 <script>
-function handleSubmit(e) {
-  e.preventDefault();
-  document.getElementById('successMsg').classList.add('show');
-  const btn = document.getElementById('submitBtn');
-  btn.textContent = '✓ Request Sent!';
-  btn.style.background = '#4a6741';
-  btn.style.boxShadow = 'none';
-  btn.disabled = true;
-}
-const zone = document.getElementById('uploadZone');
-if (zone) {
-  zone.addEventListener('dragover', e => { e.preventDefault(); zone.style.borderColor = 'var(--brick)'; });
-  zone.addEventListener('dragleave', () => { zone.style.borderColor = 'var(--tan)'; });
-  zone.addEventListener('drop', e => {
-    e.preventDefault();
-    zone.style.borderColor = 'var(--moss)';
-    zone.querySelector('p').innerHTML = `<strong>${e.dataTransfer.files.length} file(s) ready to send</strong>`;
-  });
-  document.getElementById('photo-upload').addEventListener('change', function() {
-    if (this.files.length > 0) {
-      zone.querySelector('p').innerHTML = `<strong>${this.files.length} file(s) selected</strong>`;
-      zone.style.borderColor = 'var(--moss)';
-    }
-  });
-}
+function handleSubmit(e){e.preventDefault();document.getElementById('successMsg').classList.add('show');var btn=document.getElementById('submitBtn');btn.textContent='✓ Request Submitted';btn.style.background='#1a3a56';btn.disabled=true;}
+var zone=document.getElementById('uploadZone');
+if(zone){zone.addEventListener('dragover',function(e){e.preventDefault();zone.style.borderColor='var(--navy)';});zone.addEventListener('dragleave',function(){zone.style.borderColor='var(--silver)';});document.getElementById('photo-upload').addEventListener('change',function(){if(this.files.length>0){zone.querySelector('p').innerHTML='<strong>'+this.files.length+' file(s) selected</strong>';zone.style.borderColor='var(--navy)';}});}
 </script>
 </body>
 </html>
